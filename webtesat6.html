@@ -1,0 +1,3237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image/logo.jpeg" type="image/x-icon">
+    <title>StudyTime</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+   
+    <style>
+          
+
+        .navbar {
+            background-color: #d1cbcb;
+            padding: 15px 0;
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-brand span {
+            color: orange;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .navbar-nav .nav-item {
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            padding: 10px 15px;
+            transition: color 0.3s;
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f0ad4e;
+        }
+
+        /* Orange hover line */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dark mode button */
+        .dark-mode-btn {
+            color: #e0f0f0;
+            margin-left: 15px;
+        }
+
+        /* Sign up button */
+        .sign-up-btn {
+            margin-left: 15px;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            background-color: #333;
+            border: none; /* Remove default border */
+            box-shadow: none; /* Remove default shadow */
+            padding: 0; /* Remove default padding */
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            padding: 10px 20px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .dropdown-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown-item:hover::after {
+            width: 100%;
+        }
+        .user-info-container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.tooltip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.file-input-label {
+  font-size: 14px;
+  color: #123;
+  text-decoration: underline;
+  cursor: pointer;
+}
+   
+body {
+	font-family: Montserrat, sans-serif;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(9, 14, 23);
+	color: #ffffff;
+}
+
+svg {
+	opacity: 0;
+	position:none;
+}
+
+.wrapper {
+	position: relative;
+}
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: clamp(1rem, 2vw, 5rem);
+}
+
+
+.hero--secondary {
+	--mask: radial-gradient(circle at var(--x, 70%) var(--y, 50%), black 25%, transparent 0);
+	position: absolute;
+	top: 0;
+	left: 0;
+    bottom: 20%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(45deg, #482EF4, #5FF4C2, #ffffff);
+	color: rgb(9, 14, 23);
+	-webkit-mask-image: var(--mask);
+	mask-image: var(--mask);
+}
+
+.hero__heading {
+	font-size: clamp(2rem, 5vw, 8rem);
+	text-transform: uppercase;
+	margin: 0;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  position: relative;
+  padding: 12px 35px;
+  background: #fec195;
+  font-size: 17px;
+  font-weight: 500;
+  color: #181818;
+  border: 3px solid #fec195;
+  border-radius: 8px;
+  box-shadow: 0 0 0 #fec1958c;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.star-1 {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 25px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-2 {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-3 {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-4 {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 8px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-5 {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-6 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fffdef);
+  z-index: -5;
+  transition: all 0.8s ease;
+}
+
+button:hover {
+  background: transparent;
+  color: #fec195;
+  box-shadow: 0 0 25px #fec1958c;
+}
+
+button:hover .star-1 {
+  position: absolute;
+  top: -80%;
+  left: -30%;
+  width: 25px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+button:hover .star-2 {
+  position: absolute;
+  top: -25%;
+  left: 10%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+button:hover .star-3 {
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+button:hover .star-4 {
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  width: 8px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+button:hover .star-5 {
+  position: absolute;
+  top: 25%;
+  left: 115%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+button:hover .star-6 {
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fffdef);
+  z-index: 2;
+}
+
+.fil0 {
+  fill: #fffdef;
+}
+/*about*/
+/* Reset default margin and padding */
+
+.about-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.section-content {
+    max-width: 6000px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+/* General Styles */
+/* General Styles */
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 15px 0;
+    color: #fff;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    margin-right: 15px;
+}
+
+
+/* CSS Animation */
+@keyframes slidein {
+  from {
+    margin-block-start: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+.animated {
+  animation: slidein 5s;
+}
+
+/* Services Section */
+.services-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.service-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service-item i {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* Imported Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700');
+
+/* Reset and General Styles */
+
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card__info-hover {
+    position: relative;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+}
+
+.card__img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card__info {
+    padding: 20px;
+}
+
+.card__category {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #abcdef;
+    margin-bottom: 8px;
+}
+
+.card__role {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.card__description {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.icon {
+    font-size: 25px;
+    color: #a19f9f;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+/*courses*/
+
+
+.course {
+    background-image: linear-gradient(to right bottom, #000428, #004e92);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.course-content {
+    max-width: 600px;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+t {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.course-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px;
+    
+}
+
+.course-card {
+    width: 320px;
+    height: 450px;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+}
+
+.course-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.course-details {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.course-description {
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    background-color: #c7b95b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #87aad190;
+}
+
+/*courses*/
+headers, mains, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+headers {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+mains section {
+    margin-bottom: 30px;
+    background-color: #222; /* Dark gray */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+}
+
+h1 {
+    color: orange; /* Orange */
+}
+
+h2 {
+    color: #fff; /* White */
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #ccc; /* Light gray */
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #666; /* Dark gray */
+    border-radius: 5px;
+    color: #fff; /* White text */
+    background-color: #333; /* Very dark gray */
+}
+
+form input[type="submit"] {
+    background-color: #0078d4; /* Dark blue */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #005ea2; /* Darker blue on hover */
+}
+#video-container {
+            margin-bottom: 30px;
+            background-color: #222; /* Dark gray */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+            text-align: center;
+        }
+
+        #video-container video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+footer ul li a {
+    color: orange; /* Orange */
+    text-decoration: none;
+    font-size: 24px;
+}
+
+footer ul li a:hover {
+    color: #ff7f00; /* Lighter orange on hover */
+}
+/* Tooltips */
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: #81f18154;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    top: -35px; /* Adjust tooltip position above the icon */
+    left: 50%; /* Center tooltip horizontally */
+    transform: translateX(-50%); /* Center tooltip horizontally */
+}
+
+.icon a {
+    position: relative;
+    display: inline-block;
+}
+
+.icon a:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.icon i {
+    color: orange; /* Customize icon color */
+    font-size: 32px; /* Increase icon size */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+
+.icon a:hover i {
+    color: #6ff080; /* Change icon color on hover */
+}
+.idern {
+  color: orange;
+  font-size: 50px;
+  transition: color 0.3s ease;
+}
+ /* Keep existing styles here */
+        /* Add custom styles for fade-in effect */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 5s ease;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+        }
+         form input[type="text"],
+        form input[type="email"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #666; /* Dark gray */
+            border-radius: 5px;
+            color: #fff; /* White text */
+            background-color: #333; /* Very dark gray */
+        }
+
+        form input[type="submit"] {
+            background-color: #0078d4; /* Dark blue */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #005ea2; /* Darker blue on hover */
+        }
+
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 35%; /* Adjust this value based on your map's aspect ratio */
+            position: relative;
+        }
+
+        .map-responsive iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #video-comments-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        #video-container, #comments {
+            flex: 1;
+            width: 48%; /* Equal width for both containers */
+        }
+
+        #video-container {
+            margin-right: 4%; /* Add margin between the containers */
+        }
+
+        #video-container video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        #comments {
+            background-color: #222; /* Dark gray */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+            color: #fff; /* White text */
+        }
+
+        #comments h2 {
+            color: orange; /* Orange */
+            margin-bottom: 10px;
+        }
+
+        #comments label {
+            display: block;
+            margin-bottom: 10px;
+        }
+</style>
+</head>
+<body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
+	<nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span>STUDY</span> Time</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: whitesmoke;">#</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
+                            <a class="dropdown-item" href="#about-us">About Us</a>
+                            <a class="dropdown-item" href="#services">Services</a>
+                            <a class="dropdown-item" href="#our-team">Our Team</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#our-courses">Our Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#test">challenge Your self</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us">Contact</a>
+                    </li>
+                </ul>
+                
+              
+              
+    </nav>
+<div class="wrapper">
+	<div class="hero">
+		<h1 class="hero__heading">welcome to <samp style="color: orange;"><b>STUDY</b></samp><samp style="color:white;"><b>time</b></samp></h1>
+		<h2 class="hero__heading"><samp style="font-size:larger;">your</samp><samp style="font-size: larger;color:orange"><b> class room</b></samp></h2>
+	</div>
+
+	<div class="hero hero--secondary" aria-hidden="true" data-hero>
+		<p class="hero__heading">Where we offer </p>
+		<p class="hero__heading">the<samp style="color: orange;"><b> best courses</b></p>
+
+	
+
+<center><button>discover more</button></center>
+
+</div>
+</div>
+
+<section id="about-us" class="about-section">
+  <div class="container">
+      <div class="section-header"class="fade-in">
+          <h2>About Us</h2>
+          <p class="animated">Hey everyone, welcome to Study Time your hub for awesome learning!</p>
+      </div>
+      <div class="section-content">
+          
+          <p class="animated">At Study Time, we're on a mission to revolutionize the way students in Ethiopia approach education. Our vision is simple yet powerful: to make high-quality educational resources accessible to every student, completely free of charge. We believe that learning should be personalized, not standardized. That's why we're breaking away from the old one-size-fits-all approach to education, empowering students to learn in a way that truly resonates with them. So, dive in and discover a whole new world of learning possibilities with Study Time!</p>
+      </div>
+  </div>
+  </section>
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Discover our range of educational services designed to enhance your learning experience.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-book-open"></i>
+                    <h3>New Curriculum Courses</h3>
+                    <p>Courses based on the latest school curriculum updates.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>PDF Courses</h3>
+                    <p>Access downloadable PDF course materials.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Courses</h3>
+                    <p>Engage with video-based educational content.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Interactive Quizzes</h3>
+                    <p>Participate in interactive quizzes to test your knowledge.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Assistance</h3>
+                    <p>AI-powered assistance for personalized learning experiences.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa fa-users"></i>
+                    <h3>User Community</h3>
+                    <p>Join our active user community for discussions and support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+
+        
+        
+    <section id="our-team">
+        <center><h1><b>our team</b></h1></center>
+        <div class="cards">
+        <!-- Card 1: Emanudin Amin -->
+  
+        <article class="card" style="background-image: url('image/emanudins1.jpg');">
+            <div class="card__img"></div>
+            <div class="card__info">
+                <span class="card__category">Founder & Developer</span>
+                <h3 class="card__title">Emanudin Amin</h3>
+                <p class="card__description">
+                    Emanudin is passionate about revolutionizing education through technology.
+                    He founded Study Time with a vision to make high-quality educational resources accessible to everyone.
+                </p>
+                <div class="contact-buttons">
+                    <i class="icon fab fa-github"></i>
+                    <i class="icon fab fa-instagram"></i>
+                    <i class="icon fab fa-telegram"></i>
+                    <i class="icon fas fa-envelope"></i>
+                </div>
+            </div>
+        </article>
+    
+        <!-- Card 2: Yoseph -->
+        <article class="card" style="background-image: url('image/ysephs1.jpg');">
+            <div class="card__img"></div>
+            <div class="card__info">
+                <span class="card__category">Graphics Designer & Video Editor</span>
+                <h3 class="card__title">Yoseph</h3>
+                <p class="card__description">
+                    Yoseph specializes in graphic design and video editing.
+                    He brings creativity and visual storytelling to Study Time's educational content.
+                </p>
+                <div class="contact-buttons">
+                    <i class="icon fab fa-tiktok"></i>
+                    <i class="icon fab fa-telegram"></i>
+                    <i class="icon fas fa-envelope"></i>
+                    <i class="icon fas fa-phone"></i>
+                </div>
+            </div>
+        </article>
+    </hero>
+        </div>
+    </section>
+    
+    
+  <section id="our-courses" class="fade-in">
+        <header class="course">
+            <div class="course-container">
+                <h1>Grade 12 Adventure Courses</h1>
+                <h3>Explore premium courses designed to inspire and empower.</h3>
+            </div>
+        </header>
+    
+        <section class="course-container" id="courseContainer">
+         
+    
+    </section>
+
+<section id="test"class="fade-in">
+ 
+        <center><h2><b><c2>How much do you know &#129300;?</c2></b></h2></center>
+    
+    
+      
+        <style>
+         
+        
+          .acontainer {
+            max-width: 6000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            overflow-x: auto;
+          }
+        
+          h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+          }
+        
+          .subject-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            gap: 20px;
+            padding-bottom: 20px;
+            overflow-x: auto;
+          }
+        
+          .subject-card {
+            flex: 0 0 auto;
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+          }
+        
+          .subject-card:hover {
+            transform: translateY(-5px);
+          }
+        
+          .subject-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          }
+        
+          .subject-card h3 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+          }
+        
+          .subject-card button {
+            background-color: rgba(30, 211, 30, 0.646);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+        
+          .subject-card button:hover {
+            background-color: #ff6348;
+          }
+        
+          @media (max-width: 768px) {
+            .subject-card {
+              width: 250px;
+            }
+          }
+        
+          @media (max-width: 480px) {
+            .subject-card {
+              width: 200px;
+            }
+          }
+        
+          /* Additional Styles */
+          .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+        
+          .modal-content {
+            background-color: #9d9696;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow:#123;
+            text-align: center;
+            position: relative;
+            animation: slideIn 0.3s ease;
+          }
+        
+          @keyframes slideIn {
+            from { top: -50%; opacity: 0; }
+            to { top: 50%; opacity: 1; }
+          }
+        
+          .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color:whitesmoke;
+            cursor: pointer;
+            transition: color 0.3s ease;
+          }
+        
+          .close:hover {
+            color: #333;
+          }
+        
+          .feedback-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+          }
+        
+          .feedback-correct {
+            color: #007bff;
+          }
+        
+          .feedback-incorrect {
+            color: #dc3545;
+          }
+        
+          /* Submit Button Style */
+          #submitButton {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 15px ;
+            font-size: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+        
+          #submitButton:hover {
+            background-color: lawngreen;
+          }
+        </style>
+        </head>
+        <body>
+        
+        <div class="acontainer">
+          <h1>Choose a Subject</h1>
+          <div class="subject-container">
+            <!-- Subject cards will be dynamically added here -->
+          </div>
+        </div>
+        
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="question-container">
+              <h2 id="question"></h2>
+              <p id="question-counter"></p>
+            </div>
+            <div id="progress-bar">
+              <div id="progress-bar-inner"></div>
+            </div>
+            <form id="optionsForm">
+              <div id="options"></div>
+              <p id="feedback"></p>
+              <button id="submitButton" type="submit">Submit Answer</button>
+            </form>
+          </div>
+        </div>
+        <!-- Link to compiled CSS -->
+        <style>
+          .wheel-and-hamster {
+            --dur: 1s;
+            position: relative;
+            width: 12em;
+            height: 12em;
+            font-size: 14px;
+          }
+        
+          .wheel,
+          .hamster,
+          .hamster div,
+          .spoke {
+            position: absolute;
+          }
+        
+          /* Add other styles as needed */
+        
+          /* Initially hide the loading spinner */
+          #loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999; /* Ensure it's on top of other content */
+          }
+        </style>
+        </head>
+        <body>
+        
+        <!-- Loading spinner container -->
+        <div id="loading-spinner" aria-label="Loading" role="img" class="wheel-and-hamster">
+          <div class="wheel"></div>
+    
+        <script>
+    
+    const subjects = [
+      {
+        name: "Mathematics",
+        image: "image/Maths.png",
+        questions: [
+        {
+    question: "What is the sum of the first 20 terms of the arithmetic sequence: 3, 7, 11, 15, ...?",
+    options: ["560", "580", "600", "620"],
+    correctAnswer: "620",
+    },
+    
+    {
+    question: "Find the 10th term of the geometric sequence: 2, 6, 18, 54, ...",
+    options: ["1048576", "786432", "19683", "262144"],
+    correctAnswer: "19683",
+    
+    },
+    
+    {
+    question: "What is the value of Σ(k^2) from k = 1 to 5?",
+    options: ["35", "55", "70", "85"],
+    correctAnswer: "55",
+    
+    },
+    
+    {
+    question: "Calculate the sum of the first 10 terms of the series: 2 + 4 + 8 + 16 + ...",
+    options: ["1022", "2046", "4094", "8190"],
+    correctAnswer: "2046",
+    
+    },
+    
+    {
+    question: "Which of the following is an arithmetic sequence?",
+    options: ["1, 3, 9, 27, ...", "2, 4, 8, 16, ...", "3, 7, 15, 31, ...", "5, 10, 20, 40, ..."],
+    correctAnswer: "3, 7, 15, 31, ...",
+    
+    },
+    
+    {
+    question: "Find the 6th term of the arithmetic sequence: 10, 7, 4, 1, ...",
+    options: ["-2", "-5", "-8", "-11"],
+    correctAnswer: "-11",
+    
+    },
+    
+    {
+    question: "What is the sum of the first 15 terms of the geometric sequence: 5, 10, 20, 40, ...?",
+    options: ["10000", "20000", "40000", "80000"],
+    correctAnswer: "81900",
+    
+    },
+    
+    {
+    question: "Calculate the value of Σ(2^k) from k = 0 to 10.",
+    options: ["2046", "4094", "8190", "16382"],
+    correctAnswer: "2046",
+    
+    },
+    
+    {
+    question: "The first term of an arithmetic sequence is 3 and the common difference is -2. What is the 15th term?",
+    options: ["-27", "-21", "-15", "-9"],
+    correctAnswer: "-27",
+    
+    },
+    
+    {
+    question: "Find the 7th term of the geometric sequence: 8, 24, 72, 216, ...",
+    options: ["32768", "59049", "131072", "262144"],
+    correctAnswer: "59049",
+    
+    },
+    
+    {
+    question: "Calculate the sum of the series: 3 + 7 + 11 + 15 + ... + 103.",
+    options: ["1960", "2080", "2140", "2200"],
+    correctAnswer: "2200",
+    
+    },
+    
+    {
+    question: "What is the value of Σ(k^3) from k = 1 to 4?",
+    options: ["100", "202", "302", "402"],
+    correctAnswer: "100",
+    
+    },
+    
+    {
+    question: "Find the sum of the first 12 terms of the geometric sequence: 2, 6, 18, 54, ...",
+    options: ["262122", "786426", "19683", "39363"],
+    correctAnswer: "786426",
+    
+    },
+    
+    {
+    question: "Which of the following is a geometric sequence?",
+    options: ["1, 2, 4, 7, ...", "2, 4, 6, 8, ...", "3, 9, 27, 81, ...", "4, 8, 16, 32, ..."],
+    correctAnswer: "3, 9, 27, 81, ...",
+    },
+    
+    {
+    question: "Find the 20th term of the arithmetic sequence: 1, 5, 9, 13, ...",
+    options: ["-27", "-23", "-19", "-15"],
+    correctAnswer: "-15",
+    
+    },
+    
+    {
+    question: "What is the sum of the first 10 terms of the series: 2 + 6 + 18 + 54 + ...?",
+    options: ["2097148", "4194302", "8388604", "16777206"],
+    correctAnswer: "2097148",
+    
+    },
+    
+    {
+    question: "Calculate the value of Σ(3^k) from k = 0 to 8.",
+    options: ["19682", "19683", "39366", "59049"],
+    correctAnswer: "9840",
+    },
+    
+    {
+    question: "The first term of a geometric sequence is 10 and the common ratio is 2. What is the 8th term?",
+    options: ["640", "1280", "2560", "5120"],
+    correctAnswer: "2560",
+    
+    },
+    
+    {
+    question: "Find the 5th term of the arithmetic sequence: -2, 1, 4, 7, ...",
+    options: ["14", "17", "20", "23"],
+    correctAnswer: "14",
+    
+    },
+    
+    {
+    question: "Calculate the sum of the first 8 terms of the geometric sequence: 3, 9, 27, 81, ...",
+    options: ["19682", "59049", "177147", "531441"],
+    correctAnswer: "6561",
+    
+    },
+    
+    {
+    question: "What is the value of Σ(k) from k = 1 to 10?",
+    options: ["45", "50", "55", "60"],
+    correctAnswer: "55",
+    
+    },
+    
+    {
+    question: "Find the sum of the first 15 terms of the arithmetic sequence: 2, 5, 8, 11, ...",
+    options: ["302", "402", "502", "602"],
+    correctAnswer: "402",
+    
+    },
+    
+    {
+    question: "Calculate the value of Σ(4^k) from k = 0 to 7.",
+    options: ["2046", "4094", "8190", "16382"],
+    correctAnswer: "5460",
+    },
+    
+    {
+    question: "The first term of a geometric sequence is 6 and the common ratio is 3. What is the 10th term?",
+    options: ["177147", "531441", "1594323", "4782969"],
+    correctAnswer: "19683",
+    
+    },
+    
+    {
+    question: "Find the 4th term of the geometric sequence: 4, 12, 36, 108, ...",
+    options: ["432", "1296", "3888", "11664"],
+    correctAnswer: "432",
+    
+    },
+        ]
+      },
+      {
+        name: "English",
+        image: "image/English.jpeg",
+        questions: [
+        {
+        question: "What is the main purpose of listening skills in language learning?",
+        options: ["To improve pronunciation", "To understand spoken language", "To write essays", "To memorize vocabulary"],
+        correctAnswer: "To understand spoken language",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is an example of a speaking skill?",
+        options: ["Understanding grammar rules", "Translating texts", "Participating in conversations", "Reading silently"],
+        correctAnswer: "Participating in conversations",
+        userAnswer: ""
+      },
+      {
+        question: "What is the key benefit of reading skills in language learning?",
+        options: ["Improving listening comprehension", "Enhancing vocabulary", "Mastering speaking fluency", "Learning grammar rules"],
+        correctAnswer: "Enhancing vocabulary",
+        userAnswer: ""
+      },
+      {
+        question: "What do vocabulary skills primarily focus on?",
+        options: ["Understanding grammar structures", "Mastering pronunciation", "Expanding word knowledge", "Developing writing style"],
+        correctAnswer: "Expanding word knowledge",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is an example of a grammar skill?",
+        options: ["Understanding idioms", "Reading poetry", "Constructing sentences", "Listening to music"],
+        correctAnswer: "Constructing sentences",
+        userAnswer: ""
+      },
+      {
+        question: "What aspect of language learning is emphasized in writing skills?",
+        options: ["Listening comprehension", "Speaking fluency", "Vocabulary acquisition", "Communication through written text"],
+        correctAnswer: "Communication through written text",
+        userAnswer: ""
+      },
+      {
+        question: "What is the primary goal of mastering speaking skills?",
+        options: ["Improving reading comprehension", "Developing writing style", "Enhancing pronunciation", "Understanding grammar rules"],
+        correctAnswer: "Enhancing pronunciation",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is a benefit of improving listening skills?",
+        options: ["Enhancing vocabulary", "Mastering grammar rules", "Understanding spoken language", "Reading comprehension"],
+        correctAnswer: "Understanding spoken language",
+        userAnswer: ""
+      },
+      {
+        question: "In language learning, what is the primary purpose of vocabulary skills?",
+        options: ["Improving reading comprehension", "Enhancing speaking fluency", "Expanding word knowledge", "Developing listening skills"],
+        correctAnswer: "Expanding word knowledge",
+        userAnswer: ""
+      },
+      {
+        question: "What skill is focused on constructing sentences correctly?",
+        options: ["Speaking skills", "Listening skills", "Grammar skills", "Writing skills"],
+        correctAnswer: "Grammar skills",
+        userAnswer: ""
+      },
+      {
+        question: "What is the main benefit of mastering speaking fluency?",
+        options: ["Enhancing pronunciation", "Improving writing skills", "Expanding vocabulary", "Understanding grammar rules"],
+        correctAnswer: "Expanding vocabulary",
+        userAnswer: ""
+      },
+      {
+        question: "What aspect of language learning is emphasized in listening skills?",
+        options: ["Pronunciation", "Grammar rules", "Vocabulary acquisition", "Writing style"],
+        correctAnswer: "Vocabulary acquisition",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is a key benefit of reading comprehension?",
+        options: ["Improving listening skills", "Understanding written language", "Enhancing speaking fluency", "Mastering grammar rules"],
+        correctAnswer: "Understanding written language",
+        userAnswer: ""
+      },
+      {
+        question: "What is the primary purpose of grammar skills in language learning?",
+        options: ["Enhancing listening comprehension", "Developing writing style", "Constructing sentences", "Expanding vocabulary"],
+        correctAnswer: "Constructing sentences",
+        userAnswer: ""
+      },
+      {
+        question: "What aspect of language learning is emphasized in writing skills?",
+        options: ["Pronunciation", "Vocabulary acquisition", "Communication through written text", "Listening comprehension"],
+        correctAnswer: "Communication through written text",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is a benefit of mastering speaking skills?",
+        options: ["Understanding spoken language", "Improving reading comprehension", "Enhancing pronunciation", "Developing writing style"],
+        correctAnswer: "Enhancing pronunciation",
+        userAnswer: ""
+      },
+      {
+        question: "What is the main goal of improving listening skills?",
+        options: ["Enhancing vocabulary", "Understanding spoken language", "Mastering grammar rules", "Reading comprehension"],
+        correctAnswer: "Understanding spoken language",
+        userAnswer: ""
+      },
+      {
+        question: "In language learning, what is the primary purpose of vocabulary skills?",
+        options: ["Expanding word knowledge", "Improving reading comprehension", "Enhancing speaking fluency", "Developing listening skills"],
+        correctAnswer: "Expanding word knowledge",
+        userAnswer: ""
+      },
+      {
+        question: "What skill is focused on constructing sentences correctly?",
+        options: ["Grammar skills", "Listening skills", "Speaking skills", "Writing skills"],
+        correctAnswer: "Grammar skills",
+        userAnswer: ""
+      },
+      {
+        question: "What is the main benefit of mastering speaking fluency?",
+        options: ["Expanding vocabulary", "Improving writing skills", "Enhancing pronunciation", "Understanding grammar rules"],
+        correctAnswer: "Enhancing pronunciation",
+        userAnswer: ""
+      },
+      {
+        question: "What aspect of language learning is emphasized in listening skills?",
+        options: ["Vocabulary acquisition", "Pronunciation", "Grammar rules", "Writing style"],
+        correctAnswer: "Vocabulary acquisition",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is a key benefit of reading comprehension?",
+        options: ["Understanding written language", "Improving listening skills", "Enhancing speaking fluency", "Mastering grammar rules"],
+        correctAnswer: "Understanding written language",
+        userAnswer: ""
+      },
+      {
+        question: "What is the primary purpose of grammar skills in language learning?",
+        options: ["Constructing sentences", "Enhancing listening comprehension", "Developing writing style", "Expanding vocabulary"],
+        correctAnswer: "Constructing sentences",
+        userAnswer: ""
+      },
+      {
+        question: "What aspect of language learning is emphasized in writing skills?",
+        options: ["Communication through written text", "Pronunciation", "Vocabulary acquisition", "Listening comprehension"],
+        correctAnswer: "Communication through written text",
+        userAnswer: ""
+      },
+      {
+        question: "Which of the following is a benefit of mastering speaking skills?",
+        options: ["Enhancing pronunciation", "Understanding spoken language", "Improving reading comprehension", "Developing writing style"],
+        correctAnswer: "Enhancing pronunciation",
+        userAnswer: ""
+      }
+          // Add English questions here
+        ]
+      },
+      {
+        name: "Physics",
+        image: "image/physics1.jpg",
+        questions: [
+        {
+    question: "Which of the following is an application of physics in medicine?",
+    options: ["Space exploration", "X-ray imaging", "Traffic engineering", "Financial modeling"],
+    correctAnswer: "X-ray imaging",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field is the Doppler effect commonly applied?",
+    options: ["Astronomy", "Agriculture", "Architecture", "Anthropology"],
+    correctAnswer: "Astronomy",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of physics is utilized in the operation of MRI machines?",
+    options: ["Electromagnetism", "Quantum mechanics", "Thermodynamics", "Optics"],
+    correctAnswer: "Electromagnetism",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in environmental science?",
+    options: ["Mobile app development", "Pollution control", "Fashion design", "Sports coaching"],
+    correctAnswer: "Pollution control",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of physics is fundamental to the design of bridges and buildings?",
+    options: ["Fluid mechanics", "Nuclear physics", "Solid-state physics", "Mechanics"],
+    correctAnswer: "Mechanics",
+    userAnswer: ""
+    },
+    {
+    question: "In which field are concepts of wave propagation and interference applied?",
+    options: ["Marketing", "Telecommunications", "Hospitality", "Music production"],
+    correctAnswer: "Telecommunications",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of physics is essential for understanding the behavior of semiconductors in electronic devices?",
+    options: ["Quantum mechanics", "Thermodynamics", "Optics", "Classical mechanics"],
+    correctAnswer: "Quantum mechanics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in transportation?",
+    options: ["Cooking techniques", "Urban planning", "Traffic flow modeling", "Art restoration"],
+    correctAnswer: "Traffic flow modeling",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of physics is utilized in the design of renewable energy systems?",
+    options: ["Astrophysics", "Particle physics", "Optoelectronics", "Thermodynamics"],
+    correctAnswer: "Thermodynamics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is a common application of physics in sports?",
+    options: ["Environmental monitoring", "Aerodynamics in vehicle design", "Biomechanics of human movement", "Psychological counseling"],
+    correctAnswer: "Biomechanics of human movement",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of physics is used in the development of laser technology?",
+    options: ["Quantum mechanics", "Thermodynamics", "Electromagnetism", "Acoustics"],
+    correctAnswer: "Quantum mechanics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of thermodynamics applied for efficient energy usage?",
+    options: ["Food industry", "Event management", "Financial analysis", "Film production"],
+    correctAnswer: "Food industry",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in communication systems?",
+    options: ["Marine biology", "Social media analytics", "Quantum computing", "Wireless technology"],
+    correctAnswer: "Wireless technology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of physics is essential for understanding climate change?",
+    options: ["Electrodynamics", "Quantum mechanics", "Fluid dynamics", "Particle physics"],
+    correctAnswer: "Fluid dynamics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in the field of forensics?",
+    options: ["Artificial intelligence", "Fingerprint analysis", "Space exploration", "Music composition"],
+    correctAnswer: "Fingerprint analysis",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which area of physics are principles of electromagnetism applied?",
+    options: ["Meteorology", "Robotics", "Geology", "Electrical engineering"],
+    correctAnswer: "Electrical engineering",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is a common application of physics in the aerospace industry?",
+    options: ["Crop farming", "Material science", "Sports nutrition", "Rocket propulsion"],
+    correctAnswer: "Rocket propulsion",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of physics is used in the design of modern computer chips?",
+    options: ["Quantum mechanics", "Electromagnetism", "Thermodynamics", "Optics"],
+    correctAnswer: "Quantum mechanics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of optics applied for imaging and visualization?",
+    options: ["Horticulture", "Surveillance", "Fashion design", "Archaeology"],
+    correctAnswer: "Surveillance",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in the entertainment industry?",
+    options: ["Public health", "Special effects in movies", "Transportation logistics", "Industrial design"],
+    correctAnswer: "Special effects in movies",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of physics is utilized in the study of earthquakes and seismic waves?",
+    options: ["Cosmology", "Seismology", "Quantum field theory", "String theory"],
+    correctAnswer: "Seismology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is a common application of physics in the field of agriculture?",
+    options: ["Urban planning", "Soil analysis", "Social media marketing", "Political science"],
+    correctAnswer: "Soil analysis",
+    
+    },
+    
+    {
+    question: "Which concept of physics is essential for understanding the behavior of light in optical fibers?",
+    options: ["Quantum mechanics", "Electromagnetism", "Thermodynamics", "Classical mechanics"],
+    correctAnswer: "Electromagnetism",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of fluid mechanics applied for understanding weather patterns?",
+    options: ["Economics", "Meteorology", "Artificial intelligence", "Medical imaging"],
+    correctAnswer: "Meteorology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of physics in the field of archaeology?",
+    options: ["Space exploration", "Dating artifacts using radiocarbon", "Consumer electronics", "Automotive design"],
+    correctAnswer: "Dating artifacts using radiocarbon",
+    userAnswer: ""
+    },
+          // Add Physics questions here
+        ]
+      },
+      {
+        name: "Biology",
+        image: "image/OIP (14).jpeg",
+        questions: [
+        {
+    question: "Which of the following is an application of biology in medicine?",
+    options: ["Agricultural farming techniques", "Genetic counseling", "Industrial manufacturing", "Financial analysis"],
+    correctAnswer: "Genetic counseling",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an example of applying biology in conservation of natural resources?",
+    options: ["Mass transportation systems", "Recycling programs", "Textile production", "Consumer electronics"],
+    correctAnswer: "Recycling programs",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of biology is fundamental to understanding food and nutrition security?",
+    options: ["Biogeography", "Ecology", "Biochemistry", "Astrobiology"],
+    correctAnswer: "Biochemistry",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are concepts of biology applied to create conscious citizens and ensure sustainable development?",
+    options: ["Political science", "Economics", "Sociology", "Environmental science"],
+    correctAnswer: "Environmental science",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of biology in biotechnology?",
+    options: ["Aerospace engineering", "Manufacturing automobiles", "Developing pharmaceuticals", "Interior design"],
+    correctAnswer: "Developing pharmaceuticals",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of biology is utilized in genetic engineering?",
+    options: ["Evolutionary biology", "Cell biology", "Microbiology", "Molecular biology"],
+    correctAnswer: "Molecular biology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an example of applying biology in agriculture?",
+    options: ["Urban planning", "Environmental remediation", "Crop breeding techniques", "Public relations"],
+    correctAnswer: "Crop breeding techniques",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of biology applied to ensure environmental sustainability?",
+    options: ["Advertising", "Chemical engineering", "Wildlife conservation", "Financial modeling"],
+    correctAnswer: "Wildlife conservation",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of biology is essential for understanding ecosystem dynamics?",
+    options: ["Botany", "Zoology", "Entomology", "Microbiology"],
+    correctAnswer: "Botany",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of biology in public health?",
+    options: ["Space exploration", "Epidemiology", "Construction management", "Graphic design"],
+    correctAnswer: "Epidemiology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of biology is used in genetic testing?",
+    options: ["Histology", "Embryology", "Genomics", "Pathology"],
+    correctAnswer: "Genomics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of biology applied to understand the impact of pollution on ecosystems?",
+    options: ["Urban planning", "Environmental science", "Fashion design", "Culinary arts"],
+    correctAnswer: "Environmental science",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of biology in wildlife management?",
+    options: ["Robotics", "Animal behavior studies", "Aviation", "Tourism"],
+    correctAnswer: "Animal behavior studies",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of biology is fundamental to understanding the dynamics of infectious diseases?",
+    options: ["Ecology", "Immunology", "Genetics", "Anthropology"],
+    correctAnswer: "Immunology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an example of applying biology in marine conservation?",
+    options: ["Data analysis", "Aquaculture", "Real estate development", "Hospitality management"],
+    correctAnswer: "Aquaculture",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of biology applied to understand the impact of climate change on biodiversity?",
+    options: ["Political science", "Meteorology", "Conservation biology", "Finance"],
+    correctAnswer: "Conservation biology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is a common application of biology in pharmaceutical research?",
+    options: ["Human resources management", "Clinical trials", "Event planning", "Interior decorating"],
+    correctAnswer: "Clinical trials",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of biology is used in forensic science for DNA analysis?",
+    options: ["Ecology", "Genetics", "Botany", "Oceanography"],
+    correctAnswer: "Genetics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of biology applied to assess and mitigate the impact of invasive species?",
+    options: ["Logistics", "Urban planning", "Conservation management", "Public relations"],
+    correctAnswer: "Conservation management",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an application of biology in bioinformatics?",
+    options: ["Industrial design", "Data analysis", "Sports coaching", "Fashion styling"],
+    correctAnswer: "Data analysis",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which area of biology is essential for understanding the biodiversity of tropical rainforests?",
+    options: ["Microbiology", "Entomology", "Ornithology", "Herpetology"],
+    correctAnswer: "Entomology",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is a common application of biology in the study of wildlife ecology?",
+    options: ["Photography", "Wildlife tracking", "Public speaking", "Film production"],
+    correctAnswer: "Wildlife tracking",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which concept of biology is utilized in the development of genetically modified organisms (GMOs)?",
+    options: ["Plant physiology", "Animal anatomy", "Molecular genetics", "Cellular respiration"],
+    correctAnswer: "Molecular genetics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "In which field are principles of biology applied to understand the impact of deforestation on ecosystems?",
+    options: ["Interior design", "Civil engineering", "Environmental science", "Culinary arts"],
+    correctAnswer: "Environmental science",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is an example of applying biology in marine biology research?",
+    options: ["Supply chain management", "Coral reef conservation", "Real estate development", "Hospitality management"],
+    correctAnswer: "Coral reef conservation",
+    userAnswer: ""
+    },
+        ]
+      },
+     {
+        name: "Chemistry",
+        image: "image/chemistry.jpg",
+        questions: [
+        {
+    question: "What is the definition of an Arrhenius acid?",
+    options: ["A substance that donates protons (H⁺ ions) in aqueous solution", "A substance that accepts protons (H⁺ ions) in aqueous solution", "A substance that donates hydroxide ions (OH⁻) in aqueous solution", "A substance that accepts hydroxide ions (OH⁻) in aqueous solution"],
+    correctAnswer: "A substance that donates protons (H⁺ ions) in aqueous solution",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a characteristic property of a Lewis acid?",
+    options: ["Accepts a proton (H⁺ ion)", "Donates an electron pair", "Forms a hydroxide ion (OH⁻)", "Releases a hydrogen ion (H⁺)"],
+    correctAnswer: "Accepts an electron pair",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution with a hydrogen ion concentration of 1 × 10⁻⁹ M?",
+    options: ["9", "7", "5", "3"],
+    correctAnswer: "9",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following represents a weak acid?",
+    options: ["HCl", "HNO₃", "H₂SO₄", "CH₃COOH"],
+    correctAnswer: "CH₃COOH",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.1 M solution of acetic acid (Ka = 1.8 × 10⁻⁵)?",
+    options: ["2", "4", "5", "7"],
+    correctAnswer: "2",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a weak base?",
+    options: ["NaOH", "KOH", "NH₄OH", "Ca(OH)₂"],
+    correctAnswer: "NH₄OH",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution containing 0.1 M ammonia (Kb = 1.8 × 10⁻⁵)?",
+    options: ["10", "8", "7", "5"],
+    correctAnswer: "10",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a buffer solution prepared by mixing equal volumes of 0.1 M acetic acid and 0.1 M sodium acetate (pKa = 4.76)?",
+    options: ["2", "4", "7", "10"],
+    correctAnswer: "4.76",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following represents a conjugate acid-base pair?",
+    options: ["HCl/NaCl", "H₂SO₄/HSO₄⁻", "NaOH/H₂O", "CH₃COOH/CH₃COO⁻"],
+    correctAnswer: "H₂SO₄/HSO₄⁻",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding 0.1 M NaOH to 0.1 M HCl until the equivalence point?",
+    options: ["7", "5", "1", "0"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.05 M solution of hydrochloric acid?",
+    options: ["0.7", "1.3", "2.3", "3.5"],
+    correctAnswer: "1.3",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution prepared by mixing 50 mL of 0.1 M HCl and 50 mL of 0.1 M NaOH?",
+    options: ["1", "7", "10", "14"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following substances acts as a buffer?",
+    options: ["HCl", "NaCl", "NH₄Cl", "CaCl₂"],
+    correctAnswer: "NH₄Cl",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What happens to the pH of a buffer solution when a small amount of strong acid is added?",
+    options: ["Increases", "Decreases", "Remains constant", "Becomes unpredictable"],
+    correctAnswer: "Remains constant",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by mixing 100 mL of 0.1 M HCl and 50 mL of 0.1 M NaOH?",
+    options: ["1", "7", "10", "14"],
+    correctAnswer: "1",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.05 M solution of hydrofluoric acid (Ka = 6.8 × 10⁻⁴)?",
+    options: ["3", "5", "7", "9"],
+    correctAnswer: "3",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a common acid-base indicator?",
+    options: ["Bromothymol blue", "Sodium hydroxide", "Calcium chloride", "Silver nitrate"],
+    correctAnswer: "Bromothymol blue",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the color of bromothymol blue in an acidic solution?",
+    options: ["Red", "Blue", "Yellow", "Green"],
+    correctAnswer: "Yellow",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a suitable indicator for titrating a strong acid with a strong base?",
+    options: ["Phenolphthalein", "Methyl orange", "Bromothymol blue", "Litmus"],
+    correctAnswer: "Phenolphthalein",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a strong acid with a strong base?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a weak acid with a strong base?",
+    options: ["Less than 7", "Equal to 7", "Greater than 7", "Cannot be determined"],
+    correctAnswer: "Greater than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a weak base with a strong acid?",
+    options: ["Less than 7", "Equal to 7", "Greater than 7", "Cannot be determined"],
+    correctAnswer: "Less than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding excess NaOH to a solution of acetic acid?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "Greater than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding excess HCl to a solution of ammonia?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "Less than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding a strong acid to a buffer solution containing a weak acid and its conjugate base?",
+    options: ["2", "7", "10", "Depends on the specific buffer composition"],
+    correctAnswer: "Depends on the specific buffer composition",
+    userAnswer: ""
+    },
+       
+        {
+    question: "What is the definition of an Arrhenius acid?",
+    options: ["A substance that donates protons (H⁺ ions) in aqueous solution", "A substance that accepts protons (H⁺ ions) in aqueous solution", "A substance that donates hydroxide ions (OH⁻) in aqueous solution", "A substance that accepts hydroxide ions (OH⁻) in aqueous solution"],
+    correctAnswer: "A substance that donates protons (H⁺ ions) in aqueous solution",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a characteristic property of a Lewis acid?",
+    options: ["Accepts a proton (H⁺ ion)", "Donates an electron pair", "Forms a hydroxide ion (OH⁻)", "Releases a hydrogen ion (H⁺)"],
+    correctAnswer: "Accepts an electron pair",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution with a hydrogen ion concentration of 1 × 10⁻⁹ M?",
+    options: ["9", "7", "5", "3"],
+    correctAnswer: "9",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following represents a weak acid?",
+    options: ["HCl", "HNO₃", "H₂SO₄", "CH₃COOH"],
+    correctAnswer: "CH₃COOH",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.1 M solution of acetic acid (Ka = 1.8 × 10⁻⁵)?",
+    options: ["2", "4", "5", "7"],
+    correctAnswer: "2",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a weak base?",
+    options: ["NaOH", "KOH", "NH₄OH", "Ca(OH)₂"],
+    correctAnswer: "NH₄OH",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution containing 0.1 M ammonia (Kb = 1.8 × 10⁻⁵)?",
+    options: ["10", "8", "7", "5"],
+    correctAnswer: "10",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a buffer solution prepared by mixing equal volumes of 0.1 M acetic acid and 0.1 M sodium acetate (pKa = 4.76)?",
+    options: ["2", "4", "7", "10"],
+    correctAnswer: "4.76",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following represents a conjugate acid-base pair?",
+    options: ["HCl/NaCl", "H₂SO₄/HSO₄⁻", "NaOH/H₂O", "CH₃COOH/CH₃COO⁻"],
+    correctAnswer: "H₂SO₄/HSO₄⁻",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding 0.1 M NaOH to 0.1 M HCl until the equivalence point?",
+    options: ["7", "5", "1", "0"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.05 M solution of hydrochloric acid?",
+    options: ["0.7", "1.3", "2.3", "3.5"],
+    correctAnswer: "1.3",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution prepared by mixing 50 mL of 0.1 M HCl and 50 mL of 0.1 M NaOH?",
+    options: ["1", "7", "10", "14"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following substances acts as a buffer?",
+    options: ["HCl", "NaCl", "NH₄Cl", "CaCl₂"],
+    correctAnswer: "NH₄Cl",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What happens to the pH of a buffer solution when a small amount of strong acid is added?",
+    options: ["Increases", "Decreases", "Remains constant", "Becomes unpredictable"],
+    correctAnswer: "Remains constant",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by mixing 100 mL of 0.1 M HCl and 50 mL of 0.1 M NaOH?",
+    options: ["1", "7", "10", "14"],
+    correctAnswer: "1",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a 0.05 M solution of hydrofluoric acid (Ka = 6.8 × 10⁻⁴)?",
+    options: ["3", "5", "7", "9"],
+    correctAnswer: "3",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a common acid-base indicator?",
+    options: ["Bromothymol blue", "Sodium hydroxide", "Calcium chloride", "Silver nitrate"],
+    correctAnswer: "Bromothymol blue",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the color of bromothymol blue in an acidic solution?",
+    options: ["Red", "Blue", "Yellow", "Green"],
+    correctAnswer: "Yellow",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a suitable indicator for titrating a strong acid with a strong base?",
+    options: ["Phenolphthalein", "Methyl orange", "Bromothymol blue", "Litmus"],
+    correctAnswer: "Phenolphthalein",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a strong acid with a strong base?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a weak acid with a strong base?",
+    options: ["Less than 7", "Equal to 7", "Greater than 7", "Cannot be determined"],
+    correctAnswer: "Greater than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH at the equivalence point of the titration of a weak base with a strong acid?",
+    options: ["Less than 7", "Equal to 7", "Greater than 7", "Cannot be determined"],
+    correctAnswer: "Less than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding excess NaOH to a solution of acetic acid?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "Greater than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding excess HCl to a solution of ammonia?",
+    options: ["2", "7", "10", "14"],
+    correctAnswer: "Less than 7",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the pH of a solution formed by adding a strong acid to a buffer solution containing a weak acid and its conjugate base?",
+    options: ["2", "7", "10", "Depends on the specific buffer composition"],
+    correctAnswer: "Depends on the specific buffer composition",
+    userAnswer: ""
+    },
+       
+          // Add Chemistry questions here
+        ]
+      },
+     
+      {
+        name: "IT",
+        image: "image/it.jpeg",
+        questions: [
+        {
+    question: "What is the primary function of information systems?",
+    options: ["Data storage", "Data analysis", "Data processing", "Data retrieval"],
+    correctAnswer: "Data processing",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following best describes the role of ethical considerations in information systems?",
+    options: ["They are irrelevant", "They are secondary", "They are paramount", "They are optional"],
+    correctAnswer: "They are paramount",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some examples of ethical issues in information systems?",
+    options: ["Data security breaches", "Software piracy", "Plagiarism", "All of the above"],
+    correctAnswer: "All of the above",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How can digital identity management benefit individuals and organizations?",
+    options: ["By ensuring anonymity online", "By facilitating secure access to resources", "By limiting digital interactions", "By promoting data breaches"],
+    correctAnswer: "By facilitating secure access to resources",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some examples of collaboration through digital technologies?",
+    options: ["Online meetings", "Social media interactions", "Virtual teamwork", "All of the above"],
+    correctAnswer: "All of the above",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which components are essential for digital collaboration?",
+    options: ["Hardware only", "Software only", "Hardware and software", "Internet connection only"],
+    correctAnswer: "Hardware and software",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the significance of engaging in citizenship through digital technologies?",
+    options: ["It promotes passive participation", "It fosters active engagement", "It encourages isolation", "It limits digital literacy"],
+    correctAnswer: "It fosters active engagement",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is intellectual property in the context of information systems?",
+    options: ["Software bugs", "Hardware malfunctions", "Digital assets such as patents and copyrights", "Internet connectivity issues"],
+    correctAnswer: "Digital assets such as patents and copyrights",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following represents a potential health issue caused by information systems?",
+    options: ["Increased physical activity", "Sedentary behavior", "Improved mental well-being", "Enhanced social connections"],
+    correctAnswer: "Sedentary behavior",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How can information systems contribute to environmental issues?",
+    options: ["By reducing paper usage", "By optimizing energy consumption", "By promoting sustainability practices", "By generating electronic waste"],
+    correctAnswer: "By generating electronic waste",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some social issues related to information systems?",
+    options: ["Increased access to education", "Digital divide", "Enhanced cultural exchange", "Improved healthcare access"],
+    correctAnswer: "Digital divide",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How can information systems address environmental concerns?",
+    options: ["By promoting deforestation", "By minimizing carbon emissions", "By encouraging waste disposal", "By depleting natural resources"],
+    correctAnswer: "By minimizing carbon emissions",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some ethical issues in information system design?",
+    options: ["Data accuracy", "Privacy protection", "Transparency", "Efficiency"],
+    correctAnswer: "Privacy protection",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a legal issue associated with information systems?",
+    options: ["Cybersecurity breaches", "Intellectual property infringement", "Data encryption", "Network connectivity"],
+    correctAnswer: "Intellectual property infringement",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How can information systems contribute to social development?",
+    options: ["By promoting inequality", "By facilitating access to education", "By fostering discrimination", "By limiting cultural diversity"],
+    correctAnswer: "By facilitating access to education",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the role of information systems in addressing health issues?",
+    options: ["Promoting sedentary lifestyles", "Facilitating remote healthcare services", "Limiting access to medical information", "Encouraging unhealthy behaviors"],
+    correctAnswer: "Facilitating remote healthcare services",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How can intellectual property issues be managed in information systems?",
+    options: ["By promoting piracy", "By enforcing copyright laws", "By sharing proprietary information freely", "By neglecting patent applications"],
+    correctAnswer: "By enforcing copyright laws",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the primary purpose of digital identity management?",
+    options: ["To create anonymity online", "To protect personal information", "To increase data vulnerability", "To promote digital surveillance"],
+    correctAnswer: "To protect personal information",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How do information systems impact social interactions?",
+    options: ["By encouraging face-to-face communication", "By facilitating global connections", "By promoting isolation", "By minimizing communication barriers"],
+    correctAnswer: "By facilitating global connections",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What role do information systems play in addressing environmental challenges?",
+    options: ["They exacerbate environmental degradation", "They promote conservation efforts", "They increase pollution levels", "They deplete natural resources"],
+    correctAnswer: "They promote conservation efforts",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is an example of collaboration through digital technologies?",
+    options: ["Sending letters via postal mail", "Conducting virtual meetings", "Reading physical books", "Attending in-person conferences"],
+    correctAnswer: "Conducting virtual meetings",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How do information systems contribute to intellectual property protection?",
+    options: ["By sharing proprietary information", "By enforcing copyright laws", "By promoting software piracy", "By neglecting data encryption"],
+    correctAnswer: "By enforcing copyright laws",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What ethical considerations are relevant to information system design?",
+    options: ["Data accuracy", "Privacy protection", "Transparency", "Efficiency"],
+    correctAnswer: "Privacy protection",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some potential health risks associated with information systems?",
+    options: ["Increased physical activity", "Sedentary behavior", "Improved mental well-being", "Enhanced social connections"],
+    correctAnswer: "Sedentary behavior",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How do information systems address environmental concerns?",
+    options: ["By promoting deforestation", "By minimizing carbon emissions", "By encouraging waste disposal", "By depleting natural resources"],
+    correctAnswer: "By minimizing carbon emissions",
+    userAnswer: ""
+    }
+          // Add IT questions here
+        ]
+      },
+      {
+        name: "Agriculture",
+        image: "image/agriculture .jpg",
+        questions: [
+        {
+    question: "What is the significance of vegetable crop production in Ethiopia?",
+    options: ["It has no significance", "It contributes to food security and income generation", "It negatively impacts the environment", "It is purely ornamental"],
+    correctAnswer: "It contributes to food security and income generation",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is an environmental factor that influences vegetable production?",
+    options: ["Political stability", "Global stock market trends", "Temperature and rainfall", "Fashion trends"],
+    correctAnswer: "Temperature and rainfall",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How are vegetable crops classified?",
+    options: ["Based on color", "Based on size", "Based on taste", "Based on plant parts consumed"],
+    correctAnswer: "Based on plant parts consumed",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are the types of vegetable crop production systems?",
+    options: ["Industrial and agricultural systems", "Aquaponics and hydroponics", "Chemical and organic systems", "Indoor and outdoor systems"],
+    correctAnswer: "Aquaponics and hydroponics",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are some principles of vegetable crop management?",
+    options: ["Irregular watering and neglect", "Applying excessive pesticides", "Ignoring soil quality", "Practicing crop rotation and soil conservation"],
+    correctAnswer: "Practicing crop rotation and soil conservation",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which environmental factors have the most significant impact on vegetable crop production?",
+    options: ["Global economic trends", "Availability of skilled labor", "Temperature, rainfall, and soil quality", "Government regulations"],
+    correctAnswer: "Temperature, rainfall, and soil quality",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are the benefits of classifying vegetable crops based on plant parts consumed?",
+    options: ["It has no benefits", "It helps in marketing strategies", "It aids in pest control", "It simplifies crop rotation practices"],
+    correctAnswer: "It simplifies crop rotation practices",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How does aquaponics differ from hydroponics in vegetable crop production?",
+    options: ["Aquaponics uses fish waste as a nutrient source, while hydroponics uses synthetic nutrients", "Aquaponics relies on soil-based cultivation, while hydroponics is soilless", "Aquaponics requires more water than hydroponics", "There is no difference between aquaponics and hydroponics"],
+    correctAnswer: "Aquaponics uses fish waste as a nutrient source, while hydroponics uses synthetic nutrients",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Why is soil conservation important in vegetable crop management?",
+    options: ["To increase soil acidity", "To prevent soil erosion and maintain soil fertility", "To promote weed growth", "To reduce water consumption"],
+    correctAnswer: "To prevent soil erosion and maintain soil fertility",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What role does temperature play in vegetable crop production?",
+    options: ["It has no role", "It affects seed germination and plant growth", "It influences marketing strategies", "It determines government policies"],
+    correctAnswer: "It affects seed germination and plant growth",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which of the following is a common environmental challenge in vegetable crop production?",
+    options: ["Abundance of natural predators", "Optimal soil pH", "Inadequate irrigation", "Stable weather patterns"],
+    correctAnswer: "Inadequate irrigation",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How does crop rotation contribute to sustainable vegetable crop management?",
+    options: ["It increases soil erosion", "It depletes soil nutrients", "It reduces pest and disease pressure", "It promotes monoculture farming"],
+    correctAnswer: "It reduces pest and disease pressure",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What is the primary goal of environmental sustainability in vegetable crop production?",
+    options: ["To maximize chemical fertilizer use", "To minimize water consumption", "To ensure long-term viability of farming practices", "To maximize monoculture farming"],
+    correctAnswer: "To ensure long-term viability of farming practices",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How do environmental regulations impact vegetable crop production?",
+    options: ["They have no impact", "They restrict the use of synthetic pesticides", "They promote excessive water usage", "They encourage deforestation"],
+    correctAnswer: "They restrict the use of synthetic pesticides",
+    userAnswer: ""
+    },
+    
+    {
+    question: "Which type of vegetable crop production system is more resource-efficient?",
+    options: ["Industrial systems", "Chemical systems", "Organic systems", "Aquaponics systems"],
+    correctAnswer: "Aquaponics systems",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are the advantages of indoor vegetable crop production?",
+    options: ["Lower production costs", "Increased exposure to natural elements", "Reduced risk of pests and diseases", "Limited control over environmental conditions"],
+    correctAnswer: "Reduced risk of pests and diseases",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How does soil quality affect vegetable crop production?",
+    options: ["It has no effect", "It influences nutrient uptake and plant growth", "It promotes rapid crop maturity", "It increases water consumption"],
+    correctAnswer: "It influences nutrient uptake and plant growth",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are the main challenges faced in organic vegetable crop production?",
+    options: ["Limited market demand", "Over-reliance on synthetic pesticides", "Difficulty in controlling pests and diseases", "High production costs"],
+    correctAnswer: "Difficulty in controlling pests and diseases",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How do environmental factors impact the quality of vegetable crops?",
+    options: ["They have no impact", "They influence taste, texture, and nutritional content", "They accelerate plant growth", "They reduce market demand"],
+    correctAnswer: "They influence taste, texture, and nutritional content",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What are the advantages of incorporating technology in vegetable crop production?",
+    options: ["Increased reliance on manual labor", "Improved efficiency and productivity", "Higher production costs", "Decreased environmental sustainability"],
+    correctAnswer: "Improved efficiency and productivity",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What role does irrigation play in vegetable crop production?",
+    options: ["It has no role", "It reduces soil erosion", "It promotes excessive water consumption", "It enhances soil fertility"],
+    correctAnswer: "It reduces soil erosion",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How does global warming affect vegetable crop production?",
+    options: ["It has no effect", "It increases crop yields", "It disrupts weather patterns and leads to crop failures", "It accelerates plant growth"],
+    correctAnswer: "It disrupts weather patterns and leads to crop failures",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What measures can be taken to mitigate environmental impacts in vegetable crop production?",
+    options: ["Increase chemical pesticide use", "Reduce water conservation efforts", "Implement sustainable farming practices", "Promote deforestation"],
+    correctAnswer: "Implement sustainable farming practices",
+    userAnswer: ""
+    },
+    
+    {
+    question: "How does the classification of vegetable crops impact market demand?",
+    options: ["It has no impact", "It influences consumer preferences and market trends", "It leads to lower crop yields", "It increases production costs"],
+    correctAnswer: "It influences consumer preferences and market trends",
+    userAnswer: ""
+    },
+    
+    {
+    question: "What role does government policy play in vegetable crop production?",
+    options: ["It has no role", "It regulates pesticide use and environmental practices", "It promotes excessive water consumption", "It discourages sustainable farming practices"],
+    correctAnswer: "It regulates pesticide use and environmental practices",
+    userAnswer: ""
+    }
+    
+          // Add Agriculture questions here
+        ]
+    },
+    
+    
+      {
+        name: "SAT",
+        image: "image/satexam.png",
+        questions: [
+          {
+        question: "Reading Comprehension: According to the passage, what were two significant outcomes of the Industrial Revolution?",
+        options: ["Economic stagnation and environmental degradation", "Urbanization and technological advancements", "Political unrest and agricultural expansion", "Cultural revival and scientific discoveries"],
+        correctAnswer: "Urbanization and technological advancements",
+       
+      },
+      {
+        question: "Writing and Language: Choose the option that corrects the underlined portion of the sentence: Despite of her busy schedule, Sarah made time for volunteer work every weekend.",
+        options: ["Despite of", "Despite", "Despite her", "Despite having"],
+        correctAnswer: "Despite",
+      
+      },
+      {
+        question: "Mathematics: If (2x + 3y = 7) and (4x - y = 5), what is the value of (x)?",
+        options: ["1", "2", "3", "4"],
+        correctAnswer: "2",
+       
+      },
+      {
+        question: "Mathematics: If f(x) = 1/x, what is the value of f(2)?",
+        options: ["1", "0.5", "2", "-2"],
+        correctAnswer: "0.5",
+     
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what is the central concept of Darwin's theory of evolution?",
+        options: ["Fixed species", "Natural selection", "Rapid mutation", "Static environment"],
+        correctAnswer: "Natural selection",
+      
+      },
+      {
+        question: "Writing and Language: Choose the option that correctly identifies the error in the sentence: The dog layed in the sun for hours, enjoying the warm weather.",
+        options: ["layed", "enjoying the warm weather", "in the sun", "for hours"],
+        correctAnswer: "layed",
+     
+      },
+      {
+        question: "Mathematics: If x^2 + 2x - 15 = 0, what are the solutions for x?",
+        options: ["x = 3 and x = -5", "x = 3 and x = 5", "x = -3 and x = -5", "x = -3 and x = 5"],
+        correctAnswer: "x = 3 and x = -5",
+       
+      },
+      {
+        question: "Mathematics: If g(x) = 3x^2 - 2x + 5, what is the value of g'(1)?",
+        options: ["-1", "5", "1", "7"],
+        correctAnswer: "7",
+      
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what were two areas of advancement during the Renaissance?",
+        options: ["Economics and politics", "Science and technology", "Religion and philosophy", "Art and literature"],
+        correctAnswer: "Art and literature",
+       
+      },
+      {
+        question: "Writing and Language: Choose the phrase that would best replace the underlined portion in the following sentence: The concert was so loud, it damaged my ears permanently.",
+        options: ["It damaged", "Permanently", "So loud", "The concert"],
+        correctAnswer: "So loud",
+        
+      },
+      {
+        question: "Mathematics: If f(x) = x^2 - 4/x + 2, what is the value of f(2)?",
+        options: ["4", "0", "2", "-2"],
+        correctAnswer: "0",
+     
+      },
+      {
+        question: "Mathematics: If h(x) = 4x^3 - 3x^2 + 2x - 1, what is the value of h'(3)?",
+        options: ["35", "47", "83", "71"],
+        correctAnswer: "83",
+      
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what are two principles associated with modern democracy?",
+        options: ["Totalitarianism and oligarchy", "Feudalism and aristocracy", "Monarchy and dictatorship", "Popular sovereignty and individual rights"],
+        correctAnswer: "Popular sovereignty and individual rights",
+       
+      },
+      {
+        question: "Writing and Language: Choose the option that corrects the underlined portion of the sentence: The author wrote over a hundred book's during his lifetime.",
+        options: ["book's", "books's", "books", "books'"],
+        correctAnswer: "books",
+      },
+      {
+        question: "Mathematics: If 3x + 4y = 12 and 2x - 5y = -3, what is the value of y?",
+        options: ["3", "5", "2", "4"],
+        correctAnswer: "3",
+    
+      },
+      {
+        question: "Mathematics: If k(x) = x, what is the value of k(2)?",
+        options: ["1/2", "0", "1", ""],
+        correctAnswer: "2",
+        
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what was the main idea behind manifest destiny?",
+        options: ["Promoting cultural diversity", "Limiting territorial expansion", "Fostering diplomatic relations", "Justifying westward expansion"],
+        correctAnswer: "Justifying westward expansion",
+        
+      },
+      {
+        question: "Writing and Language: Choose the phrase that would best replace the underlined portion in the following sentence: Despite being tired, Jack stayed up late to finish his homework.",
+        options: ["Despite being tired", "Being tired", "Despite his tiredness", "Tired"],
+        correctAnswer: "Despite being tired",
+     
+      },
+      {
+        question: "Mathematics: If 2^x = 8, what is the value of x?",
+        options: ["2", "3", "4", "8"],
+        correctAnswer: "3",
+       
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what impact did the printing press have on literacy rates?",
+        options: ["It had no impact on literacy rates", "It contributed to decreased literacy rates", "It had a negligible impact on literacy rates", "It contributed to increased literacy rates"],
+        correctAnswer: "It contributed to increased literacy rates",
+       
+      },
+      {
+        question: "Writing and Language: The team played good in the first half, but poorly in the second half.",
+        options: ["good", "poorly", "played", "in the first half"],
+        correctAnswer: "good",
+     
+      },
+      {
+        question: "Reading Comprehension: According to the passage, what are two impacts associated with climate change?",
+        options: ["Decreased greenhouse gas emissions and increased biodiversity", "Decreased sea levels and increased agricultural productivity", "Increased extreme weather events and changing precipitation patterns", "Increased fossil fuel consumption and reduced global temperatures"],
+        correctAnswer: "Increased extreme weather events and changing precipitation patterns",
+      },
+      {
+        question: "Writing and Language: Choose the phrase that would best replace the underlined portion in the following sentence: Despite the heavy rain, the team continued with their outdoor practice session.",
+        options: ["Nevertheless", "Nonetheless", "In spite of", "However"],
+        correctAnswer: "Nevertheless",
+     
+      }
+        ],
+    },
+    ];
+    
+    //Function to create and display subject cards
+    function displaySubjects() {
+      const subjectContainer = document.querySelector(".subject-container");
+    
+      subjects.forEach(subject => {
+        const card = document.createElement("div");
+        card.classList.add("subject-card");
+    
+        const image = document.createElement("img");
+        image.src = subject.image;
+        image.alt = subject.name;
+    
+        const heading = document.createElement("h3");
+        heading.textContent = subject.name;
+    
+        const button = document.createElement("button");
+        button.textContent = "Take Exam";
+        button.addEventListener("click", () => {
+          showModal(subject);
+        });
+    
+        card.appendChild(image);
+        card.appendChild(heading);
+        card.appendChild(button);
+    
+        subjectContainer.appendChild(card);
+      });
+    }
+    
+    // Function to display modal with questions
+    function showModal(subject) {
+      const modal = document.getElementById("myModal");
+      const progressBarInner = document.getElementById("progress-bar-inner");
+      const questionElement = document.getElementById("question");
+      const optionsContainer = document.getElementById("options");
+      const feedbackElement = document.getElementById("feedback");
+    
+      modal.style.display = "block";
+      feedbackElement.textContent = "";
+    
+      let currentIndex = 0;
+      const questions = subject.questions;
+    
+      // Display first question
+      displayQuestion();
+    
+      function displayQuestion() {
+        const currentQuestion = questions[currentIndex];
+        questionElement.textContent = currentQuestion.question;
+        optionsContainer.innerHTML = ""; // Clear previous options
+    
+        // Create radio buttons for options
+        currentQuestion.options.forEach((option, index) => {
+          const optionRadio = document.createElement("input");
+          optionRadio.type = "radio";
+          optionRadio.name = "option";
+          optionRadio.value = option;
+          optionRadio.id = `option${index}`;
+    
+          const optionLabel = document.createElement("label");
+          optionLabel.htmlFor = `option${index}`;
+          optionLabel.textContent = option;
+    
+          const optionDiv = document.createElement("div");
+          optionDiv.appendChild(optionRadio);
+          optionDiv.appendChild(optionLabel);
+    
+          optionsContainer.appendChild(optionDiv);
+        });
+      }
+    
+      // Handle form submission
+      const form = document.getElementById("optionsForm");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+    
+        const selectedOption = document.querySelector("input[name='option']:checked");
+        if (!selectedOption) {
+          feedbackElement.textContent = "Please select an option.";
+          return;
+        }
+    
+        const userAnswer = selectedOption.value;
+        const correctAnswer = questions[currentIndex].correctAnswer;
+    
+        if (userAnswer === correctAnswer) {
+          feedbackElement.innerHTML = `<i class="fa fa-check-circle feedback-icon feedback-correct"></i> Correct!`;
+        } else {
+          feedbackElement.innerHTML = `<i class="fa fa-times-circle feedback-icon feedback-incorrect"></i> Incorrect. The correct answer is: ${correctAnswer}`;
+        }
+        // Move to the next question or close modal if all questions are answered
+        currentIndex++;
+        progressBarInner.style.width = `${(currentIndex / questions.length) * 100}%`;
+        if (currentIndex < questions.length) {
+          setTimeout(() => {
+            feedbackElement.textContent = "";
+            displayQuestion();
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 2000);
+        }
+      });
+    
+      // Close the modal when the close button is clicked
+      const closeBtn = document.getElementsByClassName("close")[0];
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      };
+    
+      // Close the modal when user clicks outside of it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    }
+    
+    // Call the function to display subject cards
+    displaySubjects();
+    </script>
+</section>
+<section id="#our-team">
+  <headers>
+    <h1>Contact Us</h1>
+    <p>Get in touch with our aesthetician collective for appointments and inquiries.</p>
+</headers>
+
+<mains>
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li class="fade-in"><i class="fas fa-map-marker-alt"></i> Bole_Community_High_School</li>
+            <li class="fade-in"><i class="fas fa-phone"></i> +(251)975952355</li>
+            <li class="fade-in"><i class="fas fa-envelope"></i> info@aestheticiancollective.com</li>
+        </ul>
+   
+</section>
+    <section id="map-comments-container">
+        <div id="map">
+            <h2>Our Location</h2>
+            <div class="map-responsive">
+                <!-- Embed your map here -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
+                    width="100%" 
+                    height="550%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+     </section>   
+
+
+  <div id="video-comments-container">
+      <div id="video-container">
+          <h2>Our Video</h2>
+          <video controls>
+              <source src="your-video-file.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+
+      <div id="comments">
+          <h2>Leave a Message</h2>
+          <form action="/submit_comment" method="POST">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required><br><br>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required><br><br>
+              <label for="message">Message:</label><br>
+              <textarea id="message" name="message" rows="4" required></textarea><br><br>
+              <input type="submit" value="Send Message">
+          </form>
+      </div>
+  </div>
+</mains>
+</section>
+</main>
+
+
+
+
+<footer>
+    <ul>
+        <li class="icon phone" title="Phone">
+            <a href="tel:+251975952355" target="_blank">
+                <i class="fas fa-phone"></i>
+                <span class="tooltip">+251975952355</span>
+            </a>
+        </li>
+        <li class="icon email" title="Email">
+            <a href="mailto:emanudinamin21@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+                <span class="tooltip">emanudinamin21@gmail.com</span>
+            </a>
+        </li>
+        <li class="icon telegram" title="Telegram">
+            <a href="https://t.me/yourusername" target="_blank">
+                <i class="fab fa-telegram"></i>
+                <span class="tooltip">@study_time</span>
+            </a>
+        </li>
+        <li class="icon instagram" title="Instagram">
+            <a href="https://www.instagram.com/yourusername" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span class="tooltip">study_time</span>
+            </a>
+        </li>
+        <li class="icon location" title="Location">
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="tooltip">Bole_Community_High_School</span>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+
+</section>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const controller = new ScrollMagic.Controller();
+
+  const fadeIns = document.querySelectorAll('.fade-in');
+  fadeIns.forEach(element => {
+      new ScrollMagic.Scene({
+          triggerElement: element,
+          triggerHook: 0.8,
+          reverse: false
+      })
+      .setClassToggle(element, 'is-visible')
+      .addTo(controller);
+  });
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+    
+    
+   
+    
+    <!-- JavaScript (Bootstrap) -->
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    // Smooth scroll to section when navbar links are clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Animate elements on scroll (if needed)
+    window.addEventListener('scroll', () => {
+        // Add your scroll animations here
+    });
+});
+ document.addEventListener('DOMContentLoaded', () => {
+        const heroSecondary = document.querySelector('.hero--secondary');
+
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const x = (clientX / window.innerWidth) * 100;
+            const y = (clientY / window.innerHeight) * 100;
+
+            // Update CSS custom properties for hero--secondary background animation
+            heroSecondary.style.setProperty('--x', `${x}%`);
+            heroSecondary.style.setProperty('--y', `${y}%`);
+        });
+    });
+
+/*courses*/
+    document.addEventListener('DOMContentLoaded', function() {
+    const courses = [
+        { 
+            title: "Mathematics", 
+            description: "Embark on a journey through the realm of numbers and equations.",
+            imageUrl: "image/maths.png",
+            url: "course/mathematics.html" // Example URL for Mathematics course
+        },
+        { 
+            title: "Physics", 
+            description: "Explore the mysteries of the universe, from atoms to galaxies.",
+            imageUrl: "image/physics1.jpg",
+            url: "course/physics.html" // Example URL for Physics course
+        },
+        { 
+            title: "Chemistry", 
+            description: "Unveil the secrets hidden within the periodic table and chemical reactions.",
+            imageUrl: "image/chemistry.jpg",
+            url: "course/chemistry.html" // Example URL for Chemistry course
+        },
+        { 
+            title: "Agriculture", 
+            description: "Discover the wonders of nature and the art of sustainable farming.",
+            imageUrl: "image/agriculture .jpg",
+            url: "course/Agriculture.html" // Example URL for Agriculture course
+        },
+        { 
+            title: "IT", 
+            description: "Dive into the world of coding, networks, and digital innovation.",
+            imageUrl: "image/it.jpeg",
+            url: "course/It.html" // Example URL for IT course
+        },
+        { 
+            title: "Biology", 
+            description: "Witness the intricate web of life and the beauty of biological systems.",
+            imageUrl: "image/OIP (14).jpeg",
+            url: "course/biology.html" // Example URL for Biology course
+        },
+        { 
+            title: "English", 
+            description: "Embark on a literary adventure through the masterpieces of English literature.",
+            imageUrl: "image/english.jpeg",
+            url: "course/english.html" // Example URL for English course
+        }
+    ];
+
+    const courseContainer = document.getElementById('courseContainer');
+
+    courses.forEach(course => {
+        const card = document.createElement('div');
+        card.classList.add('course-card');
+
+        const image = document.createElement('img');
+        image.src = course.imageUrl;
+        image.alt = course.title + " Image";
+        image.classList.add('course-image');
+
+        const details = document.createElement('div');
+        details.classList.add('course-details');
+
+        const title = document.createElement('h2');
+        title.textContent = course.title;
+        title.classList.add('course-title');
+
+        const description = document.createElement('p');
+        description.textContent = course.description;
+        description.classList.add('course-description');
+
+        const button = document.createElement('a');
+        button.href = course.url; // Set the URL to the course's URL
+        button.textContent = "Explore";
+        button.classList.add('button');
+
+        // Add click event listener to navigate to the course URL
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            window.location.href = course.url; // Navigate to the course URL
+        });
+
+        details.appendChild(title);
+        details.appendChild(description);
+        details.appendChild(button);
+
+        card.appendChild(image);
+        card.appendChild(details);
+
+        courseContainer.appendChild(card);
+    });
+});
+
+
+</script>
+
+</html>
