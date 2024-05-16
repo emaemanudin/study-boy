@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Course - Study Time</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+          .navbar {
+            background-color: #423f3f;
+            padding: 15px 0;
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-brand span {
+            color: orange;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .navbar-nav .nav-item {
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            padding: 10px 15px;
+            transition: color 0.3s;
+            position: relative; /* Position for hover line */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f0ad4e;
+        }
+
+        /* Orange hover line */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dark mode button */
+        .dark-mode-btn {
+            color: #e0f0f0;
+            margin-left: 15px;
+        }
+
+        /* Sign up button */
+        .sign-up-btn {
+            margin-left: 15px;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            background-color: #333;
+            border: none; /* Remove default border */
+            box-shadow: none; /* Remove default shadow */
+            padding: 0; /* Remove default padding */
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            padding: 10px 20px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .dropdown-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: orange;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown-item:hover::after {
+            width: 100%;
+        }
+        .user-info-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-info-button {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.user-info-button img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: transform 0.15s ease; /* Faster and smoother transition */
+}
+
+.user-info-button:hover img {
+  transform: scale(1.05); /* Slightly increase scale on hover */
+}
+
+.user-info-details {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  z-index: 1;
+}
+
+.user-info-button:hover .user-info-details {
+  bottom: 70px;
+  opacity: 1;
+}
+
+.user-info-form {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.user-info-form.active {
+  opacity: 1;
+}
+
+.user-info-form input {
+  width: calc(100% - 20px);
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.user-info-form button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.user-info-form button:hover {
+  background-color: #0056b3;
+}
+
+.tooltip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.file-input-label {
+  font-size: 14px;
+  color: #123;
+  text-decoration: underline;
+  cursor: pointer;
+}
+   
+body {
+	font-family: Montserrat, sans-serif;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	background-color: rgb(9, 14, 23);
+	color: #ffffff;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+/* Custom styles for the video cards */
+
+
+        
+        .card {
+            background-color: #123;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-video {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        .card-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card-info {
+            padding: 20px;
+        }
+        .card-info h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+        .card-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .book-btns {
+            text-align: center;
+        }
+        .book-btns a {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .view-btn {
+            background-color: orange;
+            border: 1px solid orange;
+            color: #fff;
+        }
+        .view-btn:hover {
+            background-color: #ff8c00; /* Darker shade of orange on hover */
+            border-color: #ff8c00;
+        }
+        .download-btn {
+            background-color: #28a745; /* Green color */
+            border: 1px solid #28a745;
+            color: #fff;
+        }
+        .download-btn:hover {
+            background-color: #218838; /* Darker shade of green on hover */
+            border-color: #218838;
+        }
+    </style>
+</head>
+<body>
+       <!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+
+
+
+
+<header>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js'></script>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span>STUDY</span> Time</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="color: whitesmoke;">#</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#webtesat6.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Courses</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="mathematics.html">Mathematics</a>
+                            <a class="dropdown-item" href="physics.html">Physics</a>
+                            <a class="dropdown-item" href="chemistry.html">Chemistry</a>
+                            <a class="dropdown-item" href="biology.html">Biology</a>
+                            <a class="dropdown-item" href="Agriculture.html">Agriculture</a>
+                            <a class="dropdown-item" href="It.html">IT</a>
+                            <a class="dropdown-item" href="#english">English</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quiz">Test Yourself</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="physics" class="course-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Physics Course</h2>
+            <p>Explore various topics in physics with engaging video lessons:</p>
+        </div>
+        <div class="row">
+            <!-- Video Card 1: Applications of Physics in Other Fields -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/AfPH_yfNRDU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Applications of Physics in Other Fields</h3>
+                        <p>Discover how physics concepts are applied in different industries and sectors.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2: Physics and Defense Technology -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/pLUWavuAxkw" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Physics and Defense Technology</h3>
+                        <p>Explore the role of physics in defense technology and strategic applications.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3: Two Dimensional Motion -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/xp6ibuI8UuQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Two Dimensional Motion</h3>
+                        <p>Learn about motion in two dimensions and projectile motion concepts.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 4: Fluid Mechanics -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/nUKUzpRgdbY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Fluid Mechanics</h3>
+                        <p>Explore the principles of fluid mechanics and its applications.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 5: Electromagnetism -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/csMqfwJRjCs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Electromagnetism</h3>
+                        <p>Discover the fundamentals of electromagnetism and electromagnetic fields.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 6: Basics of Electronics -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-video">
+                        <iframe class="video-player" src="https://www.youtube.com/embed/uXr4lXYjXuU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-info">
+                        <h3>Basics of Electronics</h3>
+                        <p>Introduction to electronic circuits and basic electronic components.</p>
+                        <div class="book-btns">
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn view-btn" target="_blank">View Book</a>
+                            <a href="book/grade 12-physics_fetena_net_4c93.pdf" class="btn download-btn" download>Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Study Time. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
