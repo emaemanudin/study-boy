@@ -876,6 +876,193 @@ footer ul li a:hover {
             display: block;
             margin-bottom: 10px;
         }
+	    /*Quiz page*/
+	    .acontainer {
+    max-width: 6000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  .subject-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+    overflow-x: auto;
+  }
+
+  .subject-card {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .subject-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .subject-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .subject-card h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+
+  .subject-card button {
+    background-color: rgba(30, 211, 30, 0.646);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .subject-card button:hover {
+    background-color: #ff6348;
+  }
+
+  @media (max-width: 768px) {
+    .subject-card {
+      width: 250px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .subject-card {
+      width: 200px;
+    }
+  }
+
+  /* Additional Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    background-color: rgba(157, 150, 150, 0.765);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:#123;
+    text-align: center;
+    position: relative;
+    animation: slideIn 0.3s ease;
+    color: whitesmoke;
+  }
+
+  @keyframes slideIn {
+    from { top: -50%; opacity: 0; }
+    to { top: 50%; opacity: 1; }
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color:rgb(21, 21, 21);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .close:hover {
+    color: #333;
+  }
+
+  .feedback-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .feedback-correct {
+    color: #007bff;
+  }
+
+  .feedback-incorrect {
+    color: #dc3545;
+  }
+
+  /* Submit Button Style */
+  #submitButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 15px ;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #submitButton:hover {
+    background-color: lawngreen;
+  }
+
+  /* Next Button Style */
+  .button {
+    background-color: #ffffff00;
+    color: #fff;
+    width: 8.5em;
+    height: 2.9em;
+    border: #3654ff 0.2em solid;
+    border-radius: 11px;
+    text-align: right;
+    transition: all 0.6s ease;
+    position: relative;
+  }
+
+  .button:hover {
+    background-color: #3654ff;
+    cursor: pointer;
+  }
+
+  .button svg {
+    width: 1.6em;
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: all 0.6s ease;
+  }
+
+  .button:hover svg {
+    transform: translateX(5px);
+  }
+
+  .text {
+    margin: 0 1.5em;
+  }
 </style>
 </head>
 <body>
@@ -1048,232 +1235,321 @@ footer ul li a:hover {
 
 <section id="test"class="fade-in">
  
-        <center><h2><b><c2>How much do you know &#129300;?</c2></b></h2></center>
-    
-    
-      
-        <style>
-         
-        
-          .acontainer {
-            max-width: 6000px;
-            margin: 20px auto;
-            padding: 20px;
-            background: linear-gradient(to right, #0F2027, #203A43, #2C5364);
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            overflow-x: auto;
-          }
-        
-          h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #fff;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-          }
-        
-          .subject-container {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-            gap: 20px;
-            padding-bottom: 20px;
-            overflow-x: auto;
-          }
-        
-          .subject-card {
-            flex: 0 0 auto;
-            width: 300px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: transform 0.3s ease;
-          }
-        
-          .subject-card:hover {
-            transform: translateY(-5px);
-          }
-        
-          .subject-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-          }
-        
-          .subject-card h3 {
-            margin: 0;
-            font-size: 24px;
-            color: #333;
-          }
-        
-          .subject-card button {
-            background-color: rgba(30, 211, 30, 0.646);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-          }
-        
-          .subject-card button:hover {
-            background-color: #ff6348;
-          }
-        
-          @media (max-width: 768px) {
-            .subject-card {
-              width: 250px;
-            }
-          }
-        
-          @media (max-width: 480px) {
-            .subject-card {
-              width: 200px;
-            }
-          }
-        
-          /* Additional Styles */
-          .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-          }
-        
-          .modal-content {
-            background-color: #9d9696;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow:#123;
-            text-align: center;
-            position: relative;
-            animation: slideIn 0.3s ease;
-          }
-        
-          @keyframes slideIn {
-            from { top: -50%; opacity: 0; }
-            to { top: 50%; opacity: 1; }
-          }
-        
-          .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color:whitesmoke;
-            cursor: pointer;
-            transition: color 0.3s ease;
-          }
-        
-          .close:hover {
-            color: #333;
-          }
-        
-          .feedback-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-          }
-        
-          .feedback-correct {
-            color: #007bff;
-          }
-        
-          .feedback-incorrect {
-            color: #dc3545;
-          }
-        
-          /* Submit Button Style */
-          #submitButton {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            padding: 15px ;
-            font-size: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-          }
-        
-          #submitButton:hover {
-            background-color: lawngreen;
-          }
-        </style>
-        </head>
-        <body>
-        
-        <div class="acontainer">
-          <h1>Choose a Subject</h1>
-          <div class="subject-container">
-            <!-- Subject cards will be dynamically added here -->
-          </div>
-        </div>
-        
-        <div id="myModal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="question-container">
-              <h2 id="question"></h2>
-              <p id="question-counter"></p>
+  
+<center><h2><b><c2>How much do you know &#129300;?</c2></b></h2></center>  
+<div class="acontainer">
+  <h1>Choose a Subject</h1>
+  <div class="subject-container">
+    <!-- Subject cards will be dynamically added here -->
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="question-container">
+      <h2 id="question"></h2>
+      <p id="question-counter"></p>
+    </div>
+    <div id="progress-bar">
+      <div id="progress-bar-inner"></div>
+    </div>
+    <form id="optionsForm">
+      <div id="options"></div>
+      <p id="feedback"></p>
+      <button id="submitButton" type="submit">Submit Answer</button>
+    </form>
+    <button class="button" id="nextButton" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+      </svg>
+      <div class="text">Next</div>
+    </button>
+  </div>
+</div>
+
+<!-- Loading spinner container -->
+<div id="loading-spinner" aria-label="Loading" role="img" class="wheel-and-hamster">
+  <div class="wheel"></div>
+  <!-- Add other spinner elements here -->
+</div>
+</section>
+<section id="#our-team">
+  <headers>
+    <h1>Contact Us</h1>
+    <p>Get in touch with our aesthetician collective for appointments and inquiries.</p>
+</headers>
+
+<mains>
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li class="fade-in"><i class="fas fa-map-marker-alt"></i> Bole_Community_High_School</li>
+            <li class="fade-in"><i class="fas fa-phone"></i> +(251)975952355</li>
+            <li class="fade-in"><i class="fas fa-envelope"></i> info@aestheticiancollective.com</li>
+        </ul>
+   
+</section>
+    <section id="map-comments-container">
+        <div id="map">
+            <h2>Our Location</h2>
+            <div class="map-responsive">
+                <!-- Embed your map here -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
+                    width="100%" 
+                    height="550%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
             </div>
-            <div id="progress-bar">
-              <div id="progress-bar-inner"></div>
-            </div>
-            <form id="optionsForm">
-              <div id="options"></div>
-              <p id="feedback"></p>
-              <button id="submitButton" type="submit">Submit Answer</button>
-            </form>
-          </div>
         </div>
-        <!-- Link to compiled CSS -->
-        <style>
-          .wheel-and-hamster {
-            --dur: 1s;
-            position: relative;
-            width: 12em;
-            height: 12em;
-            font-size: 14px;
-          }
-        
-          .wheel,
-          .hamster,
-          .hamster div,
-          .spoke {
-            position: absolute;
-          }
-        
-          /* Add other styles as needed */
-        
-          /* Initially hide the loading spinner */
-          #loading-spinner {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9999; /* Ensure it's on top of other content */
-          }
-        </style>
-        </head>
-        <body>
-        
-        <!-- Loading spinner container -->
-        <div id="loading-spinner" aria-label="Loading" role="img" class="wheel-and-hamster">
-          <div class="wheel"></div>
+
+     </section>   
+
+
+  <div id="video-comments-container">
+      <div id="video-container">
+          <h2>Our Video</h2>
+          <video controls>
+              <source src="your-video-file.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+
+      <div id="comments">
+          <h2>Leave a Message</h2>
+          <form action="/submit_comment" method="POST">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required><br><br>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required><br><br>
+              <label for="message">Message:</label><br>
+              <textarea id="message" name="message" rows="4" required></textarea><br><br>
+              <input type="submit" value="Send Message">
+          </form>
+      </div>
+  </div>
+</mains>
+</section>
+</main>
+
+
+
+
+<footer>
+    <ul>
+        <li class="icon phone" title="Phone">
+            <a href="tel:+251975952355" target="_blank">
+                <i class="fas fa-phone"></i>
+                <span class="tooltip">+251975952355</span>
+            </a>
+        </li>
+        <li class="icon email" title="Email">
+            <a href="mailto:emanudinamin21@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+                <span class="tooltip">emanudinamin21@gmail.com</span>
+            </a>
+        </li>
+        <li class="icon telegram" title="Telegram">
+            <a href="https://t.me/yourusername" target="_blank">
+                <i class="fab fa-telegram"></i>
+                <span class="tooltip">@study_time</span>
+            </a>
+        </li>
+        <li class="icon instagram" title="Instagram">
+            <a href="https://www.instagram.com/yourusername" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span class="tooltip">study_time</span>
+            </a>
+        </li>
+        <li class="icon location" title="Location">
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="tooltip">Bole_Community_High_School</span>
+            </a>
+        </li>
+    </ul>
+</footer>
+
+
+</section>
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const controller = new ScrollMagic.Controller();
+
+  const fadeIns = document.querySelectorAll('.fade-in');
+  fadeIns.forEach(element => {
+      new ScrollMagic.Scene({
+          triggerElement: element,
+          triggerHook: 0.8,
+          reverse: false
+      })
+      .setClassToggle(element, 'is-visible')
+      .addTo(controller);
+  });
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     
-        <script>
     
-    const subjects = [
+    
+   
+    
+    <!-- JavaScript (Bootstrap) -->
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    // Smooth scroll to section when navbar links are clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Animate elements on scroll (if needed)
+    window.addEventListener('scroll', () => {
+        // Add your scroll animations here
+    });
+});
+ document.addEventListener('DOMContentLoaded', () => {
+        const heroSecondary = document.querySelector('.hero--secondary');
+
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const x = (clientX / window.innerWidth) * 100;
+            const y = (clientY / window.innerHeight) * 100;
+
+            // Update CSS custom properties for hero--secondary background animation
+            heroSecondary.style.setProperty('--x', `${x}%`);
+            heroSecondary.style.setProperty('--y', `${y}%`);
+        });
+    });
+
+/*courses*/
+    document.addEventListener('DOMContentLoaded', function() {
+    const courses = [
+        { 
+            title: "Mathematics", 
+            description: "Embark on a journey through the realm of numbers and equations.",
+            imageUrl: "image/Maths.png",
+            url: "mathematics.html" // Example URL for Mathematics course
+        },
+        { 
+            title: "Physics", 
+            description: "Explore the mysteries of the universe, from atoms to galaxies.",
+            imageUrl: "image/physics1.jpg",
+            url: "physics.html" // Example URL for Physics course
+        },
+        { 
+            title: "Chemistry", 
+            description: "Unveil the secrets hidden within the periodic table and chemical reactions.",
+            imageUrl: "image/chemistry.jpg",
+            url: "chemistry.html" // Example URL for Chemistry course
+        },
+        { 
+            title: "Agriculture", 
+            description: "Discover the wonders of nature and the art of sustainable farming.",
+            imageUrl: "image/agriculture .jpg",
+            url: "Agriculture.html" // Example URL for Agriculture course
+        },
+        { 
+            title: "IT", 
+            description: "Dive into the world of coding, networks, and digital innovation.",
+            imageUrl: "image/it.jpeg",
+            url: "It.html" // Example URL for IT course
+        },
+        { 
+            title: "Biology", 
+            description: "Witness the intricate web of life and the beauty of biological systems.",
+            imageUrl: "image/OIP (14).jpeg",
+            url: "biology.html" // Example URL for Biology course
+        },
+        { 
+            title: "English", 
+            description: "Embark on a literary adventure through the masterpieces of English literature.",
+            imageUrl: "image/english.jpeg",
+            url: "english.html" // Example URL for English course
+        }
+    ];
+
+    const courseContainer = document.getElementById('courseContainer');
+
+    courses.forEach(course => {
+        const card = document.createElement('div');
+        card.classList.add('course-card');
+
+        const image = document.createElement('img');
+        image.src = course.imageUrl;
+        image.alt = course.title + " Image";
+        image.classList.add('course-image');
+
+        const details = document.createElement('div');
+        details.classList.add('course-details');
+
+        const title = document.createElement('h2');
+        title.textContent = course.title;
+        title.classList.add('course-title');
+
+        const description = document.createElement('p');
+        description.textContent = course.description;
+        description.classList.add('course-description');
+
+        const button = document.createElement('a');
+        button.href = course.url; // Set the URL to the course's URL
+        button.textContent = "Explore";
+        button.classList.add('button');
+
+        // Add click event listener to navigate to the course URL
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            window.location.href = course.url; // Navigate to the course URL
+        });
+
+        details.appendChild(title);
+        details.appendChild(description);
+        details.appendChild(button);
+
+        card.appendChild(image);
+        card.appendChild(details);
+
+        courseContainer.appendChild(card);
+    });
+});
+
+<script>
+const subjects = [
       {
         name: "Mathematics",
         image: "image/Maths.png",
@@ -2834,404 +3110,140 @@ footer ul li a:hover {
     },
     ];
     
-    //Function to create and display subject cards
-    function displaySubjects() {
-      const subjectContainer = document.querySelector(".subject-container");
-    
-      subjects.forEach(subject => {
-        const card = document.createElement("div");
-        card.classList.add("subject-card");
-    
-        const image = document.createElement("img");
-        image.src = subject.image;
-        image.alt = subject.name;
-    
-        const heading = document.createElement("h3");
-        heading.textContent = subject.name;
-    
-        const button = document.createElement("button");
-        button.textContent = "Take Exam";
-        button.addEventListener("click", () => {
-          showModal(subject);
-        });
-    
-        card.appendChild(image);
-        card.appendChild(heading);
-        card.appendChild(button);
-    
-        subjectContainer.appendChild(card);
-      });
-    }
-    
-    // Function to display modal with questions
-    function showModal(subject) {
-      const modal = document.getElementById("myModal");
-      const progressBarInner = document.getElementById("progress-bar-inner");
-      const questionElement = document.getElementById("question");
-      const optionsContainer = document.getElementById("options");
-      const feedbackElement = document.getElementById("feedback");
-    
-      modal.style.display = "block";
+
+let timer;
+let currentIndex = 0;
+let questions;
+
+function displaySubjects() {
+  const subjectContainer = document.querySelector(".subject-container");
+
+  subjects.forEach(subject => {
+    const card = document.createElement("div");
+    card.classList.add("subject-card");
+
+    const image = document.createElement("img");
+    image.src = subject.image;
+    image.alt = subject.name;
+
+    const heading = document.createElement("h3");
+    heading.textContent = subject.name;
+
+    const button = document.createElement("button");
+    button.textContent = "Take Exam";
+    button.addEventListener("click", () => {
+      showModal(subject);
+    });
+
+    card.appendChild(image);
+    card.appendChild(heading);
+    card.appendChild(button);
+
+    subjectContainer.appendChild(card);
+  });
+}
+
+function showModal(subject) {
+  const modal = document.getElementById("myModal");
+  const progressBarInner = document.getElementById("progress-bar-inner");
+  const questionElement = document.getElementById("question");
+  const optionsContainer = document.getElementById("options");
+  const feedbackElement = document.getElementById("feedback");
+  const nextButton = document.getElementById("nextButton");
+
+  modal.style.display = "block";
+  feedbackElement.textContent = "";
+
+  currentIndex = 0;
+  questions = subject.questions;
+  displayQuestion();
+
+  function displayQuestion() {
+    const currentQuestion = questions[currentIndex];
+    questionElement.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = "";
+
+    currentQuestion.options.forEach((option, index) => {
+      const optionRadio = document.createElement("input");
+      optionRadio.type = "radio";
+      optionRadio.name = "option";
+      optionRadio.value = option;
+      optionRadio.id = `option${index}`;
+
+      const optionLabel = document.createElement("label");
+      optionLabel.htmlFor = `option${index}`;
+      optionLabel.textContent = option;
+
+      const optionDiv = document.createElement("div");
+      optionDiv.appendChild(optionRadio);
+      optionDiv.appendChild(optionLabel);
+
+      optionsContainer.appendChild(optionDiv);
+    });
+
+    startTimer();
+  }
+
+  function startTimer() {
+    timer = setTimeout(() => {
+      showNextQuestion();
+    }, 60000); // 1 minute
+  }
+
+  function showNextQuestion() {
+    currentIndex++;
+    if (currentIndex < questions.length) {
+      progressBarInner.style.width = `${(currentIndex / questions.length) * 100}%`;
       feedbackElement.textContent = "";
-    
-      let currentIndex = 0;
-      const questions = subject.questions;
-    
-      // Display first question
       displayQuestion();
-    
-      function displayQuestion() {
-        const currentQuestion = questions[currentIndex];
-        questionElement.textContent = currentQuestion.question;
-        optionsContainer.innerHTML = ""; // Clear previous options
-    
-        // Create radio buttons for options
-        currentQuestion.options.forEach((option, index) => {
-          const optionRadio = document.createElement("input");
-          optionRadio.type = "radio";
-          optionRadio.name = "option";
-          optionRadio.value = option;
-          optionRadio.id = `option${index}`;
-    
-          const optionLabel = document.createElement("label");
-          optionLabel.htmlFor = `option${index}`;
-          optionLabel.textContent = option;
-    
-          const optionDiv = document.createElement("div");
-          optionDiv.appendChild(optionRadio);
-          optionDiv.appendChild(optionLabel);
-    
-          optionsContainer.appendChild(optionDiv);
-        });
-      }
-    
-      // Handle form submission
-      const form = document.getElementById("optionsForm");
-      form.addEventListener("submit", function(event) {
-        event.preventDefault();
-    
-        const selectedOption = document.querySelector("input[name='option']:checked");
-        if (!selectedOption) {
-          feedbackElement.textContent = "Please select an option.";
-          return;
-        }
-    
-        const userAnswer = selectedOption.value;
-        const correctAnswer = questions[currentIndex].correctAnswer;
-    
-        if (userAnswer === correctAnswer) {
+    } else {
+      modal.style.display = "none";
+    }
+  }
+
+  const form = document.getElementById("optionsForm");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const selectedOption = document.querySelector("input[name='option']:checked");
+    if (!selectedOption) {
+      feedbackElement.textContent = "Please select an option.";
+      return;
+    }
+
+    const userAnswer = selectedOption.value;
+    const correctAnswer = questions[currentIndex].correctAnswer;
+
+    if (userAnswer === correctAnswer) {
           feedbackElement.innerHTML = `<i class="fa fa-check-circle feedback-icon feedback-correct"></i> Correct!`;
         } else {
           feedbackElement.innerHTML = `<i class="fa fa-times-circle feedback-icon feedback-incorrect"></i> Incorrect. The correct answer is: ${correctAnswer}`;
         }
-        // Move to the next question or close modal if all questions are answered
-        currentIndex++;
-        progressBarInner.style.width = `${(currentIndex / questions.length) * 100}%`;
-        if (currentIndex < questions.length) {
-          setTimeout(() => {
-            feedbackElement.textContent = "";
-            displayQuestion();
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            modal.style.display = "none";
-          }, 2000);
-        }
-      });
-    
-      // Close the modal when the close button is clicked
-      const closeBtn = document.getElementsByClassName("close")[0];
-      closeBtn.onclick = function() {
-        modal.style.display = "none";
-      };
-    
-      // Close the modal when user clicks outside of it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-    }
-    
-    // Call the function to display subject cards
-    displaySubjects();
-    </script>
-</section>
-<section id="#our-team">
-  <headers>
-    <h1>Contact Us</h1>
-    <p>Get in touch with our aesthetician collective for appointments and inquiries.</p>
-</headers>
 
-<mains>
-    <section id="contact">
-        <h2>Contact Information</h2>
-        <ul>
-            <li class="fade-in"><i class="fas fa-map-marker-alt"></i> Bole_Community_High_School</li>
-            <li class="fade-in"><i class="fas fa-phone"></i> +(251)975952355</li>
-            <li class="fade-in"><i class="fas fa-envelope"></i> info@aestheticiancollective.com</li>
-        </ul>
-   
-</section>
-    <section id="map-comments-container">
-        <div id="map">
-            <h2>Our Location</h2>
-            <div class="map-responsive">
-                <!-- Embed your map here -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
-                    width="100%" 
-                    height="550%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-
-     </section>   
-
-
-  <div id="video-comments-container">
-      <div id="video-container">
-          <h2>Our Video</h2>
-          <video controls>
-              <source src="your-video-file.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-      </div>
-
-      <div id="comments">
-          <h2>Leave a Message</h2>
-          <form action="/submit_comment" method="POST">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" required><br><br>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required><br><br>
-              <label for="message">Message:</label><br>
-              <textarea id="message" name="message" rows="4" required></textarea><br><br>
-              <input type="submit" value="Send Message">
-          </form>
-      </div>
-  </div>
-</mains>
-</section>
-</main>
-
-
-
-
-<footer>
-    <ul>
-        <li class="icon phone" title="Phone">
-            <a href="tel:+251975952355" target="_blank">
-                <i class="fas fa-phone"></i>
-                <span class="tooltip">+251975952355</span>
-            </a>
-        </li>
-        <li class="icon email" title="Email">
-            <a href="mailto:emanudinamin21@gmail.com" target="_blank">
-                <i class="fas fa-envelope"></i>
-                <span class="tooltip">emanudinamin21@gmail.com</span>
-            </a>
-        </li>
-        <li class="icon telegram" title="Telegram">
-            <a href="https://t.me/yourusername" target="_blank">
-                <i class="fab fa-telegram"></i>
-                <span class="tooltip">@study_time</span>
-            </a>
-        </li>
-        <li class="icon instagram" title="Instagram">
-            <a href="https://www.instagram.com/yourusername" target="_blank">
-                <i class="fab fa-instagram"></i>
-                <span class="tooltip">study_time</span>
-            </a>
-        </li>
-        <li class="icon location" title="Location">
-            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.7162611685817!2d38.786447273732655!3d8.998234989472408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85034af98549%3A0x47805f10b82bafdd!2sBole%20Community%20High%20School!5e0!3m2!1sen!2set!4v1703192256060!5m2!1sen!2set" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy"
-                target="_blank">
-                <i class="fas fa-map-marker-alt"></i>
-                <span class="tooltip">Bole_Community_High_School</span>
-            </a>
-        </li>
-    </ul>
-</footer>
-
-
-</section>
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-  const controller = new ScrollMagic.Controller();
-
-  const fadeIns = document.querySelectorAll('.fade-in');
-  fadeIns.forEach(element => {
-      new ScrollMagic.Scene({
-          triggerElement: element,
-          triggerHook: 0.8,
-          reverse: false
-      })
-      .setClassToggle(element, 'is-visible')
-      .addTo(controller);
+    nextButton.style.display = "block";
+    clearTimeout(timer);
   });
-});
 
+  nextButton.addEventListener("click", () => {
+    nextButton.style.display = "none";
+    showNextQuestion();
+  });
+
+  const closeBtn = document.getElementsByClassName("close")[0];
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
+
+displaySubjects();
+</script>	
 </script>
-
-
-
-
-
-
-
-
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
-    
-    
-   
-    
-    <!-- JavaScript (Bootstrap) -->
-    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-    // Smooth scroll to section when navbar links are clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Animate elements on scroll (if needed)
-    window.addEventListener('scroll', () => {
-        // Add your scroll animations here
-    });
-});
- document.addEventListener('DOMContentLoaded', () => {
-        const heroSecondary = document.querySelector('.hero--secondary');
-
-        window.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const x = (clientX / window.innerWidth) * 100;
-            const y = (clientY / window.innerHeight) * 100;
-
-            // Update CSS custom properties for hero--secondary background animation
-            heroSecondary.style.setProperty('--x', `${x}%`);
-            heroSecondary.style.setProperty('--y', `${y}%`);
-        });
-    });
-
-/*courses*/
-    document.addEventListener('DOMContentLoaded', function() {
-    const courses = [
-        { 
-            title: "Mathematics", 
-            description: "Embark on a journey through the realm of numbers and equations.",
-            imageUrl: "image/Maths.png",
-            url: "mathematics.html" // Example URL for Mathematics course
-        },
-        { 
-            title: "Physics", 
-            description: "Explore the mysteries of the universe, from atoms to galaxies.",
-            imageUrl: "image/physics1.jpg",
-            url: "physics.html" // Example URL for Physics course
-        },
-        { 
-            title: "Chemistry", 
-            description: "Unveil the secrets hidden within the periodic table and chemical reactions.",
-            imageUrl: "image/chemistry.jpg",
-            url: "chemistry.html" // Example URL for Chemistry course
-        },
-        { 
-            title: "Agriculture", 
-            description: "Discover the wonders of nature and the art of sustainable farming.",
-            imageUrl: "image/agriculture .jpg",
-            url: "Agriculture.html" // Example URL for Agriculture course
-        },
-        { 
-            title: "IT", 
-            description: "Dive into the world of coding, networks, and digital innovation.",
-            imageUrl: "image/it.jpeg",
-            url: "It.html" // Example URL for IT course
-        },
-        { 
-            title: "Biology", 
-            description: "Witness the intricate web of life and the beauty of biological systems.",
-            imageUrl: "image/OIP (14).jpeg",
-            url: "biology.html" // Example URL for Biology course
-        },
-        { 
-            title: "English", 
-            description: "Embark on a literary adventure through the masterpieces of English literature.",
-            imageUrl: "image/english.jpeg",
-            url: "english.html" // Example URL for English course
-        }
-    ];
-
-    const courseContainer = document.getElementById('courseContainer');
-
-    courses.forEach(course => {
-        const card = document.createElement('div');
-        card.classList.add('course-card');
-
-        const image = document.createElement('img');
-        image.src = course.imageUrl;
-        image.alt = course.title + " Image";
-        image.classList.add('course-image');
-
-        const details = document.createElement('div');
-        details.classList.add('course-details');
-
-        const title = document.createElement('h2');
-        title.textContent = course.title;
-        title.classList.add('course-title');
-
-        const description = document.createElement('p');
-        description.textContent = course.description;
-        description.classList.add('course-description');
-
-        const button = document.createElement('a');
-        button.href = course.url; // Set the URL to the course's URL
-        button.textContent = "Explore";
-        button.classList.add('button');
-
-        // Add click event listener to navigate to the course URL
-        button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            window.location.href = course.url; // Navigate to the course URL
-        });
-
-        details.appendChild(title);
-        details.appendChild(description);
-        details.appendChild(button);
-
-        card.appendChild(image);
-        card.appendChild(details);
-
-        courseContainer.appendChild(card);
-    });
-});
-
-
 </script>
 
 </html>
